@@ -30,6 +30,6 @@ Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United K
 , RLum Developer Team} 
 
 \section{How to cite}{
-Kreutzer, S., 2020. create_RFCurveArray(): Create Multidimensional Curve Arrays from File input. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2020. RLumSTARR: Spatially Resolved Radiofluorescence Analysis. R package version 0.1.0.9000-27. 
+Kreutzer, S., 2020. create_RFCurveArray(): Create Multidimensional Curve Arrays from File input. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2020. RLumSTARR: Spatially Resolved Radiofluorescence Analysis. R package version 0.1.0.9000-28. 
 }
 
