@@ -116,7 +116,7 @@ HPD <- coda::HPDinterval(jags_output)
 curve <- Luminescence::set_RLum(class = "RLum.Data.Curve",
                   curveType = "RF",
                   data = matrix(c(as.numeric(rownames(data)), rowMeans(
-                    matrix(unlist(HPD), ncol = 2)
+                    matrix(unlist(HPD), ncol = 2 * method_control$n.chain)
                   )), ncol = 2))
 
 return(list(curve = curve, jags_output = jags_output))
