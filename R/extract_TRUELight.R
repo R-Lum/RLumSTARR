@@ -12,7 +12,8 @@
 #'
 #'@return Returns a list with an [Luminescence::RLum.Data.Curve-class] object
 #'(the RF curve with the true light) and the [rjags::coda.samples] output for
-#'further processing.
+#'further processing. *Note: Regardless the observed variable, the parameter alpha
+#'will be always be used to create the curve*
 #'
 #'@section Function version: 0.1.0
 #'
@@ -74,7 +75,7 @@ method_control <- modifyList(x = list(
     n.chain = 3,
     n.iter = 1000,
     thin = 100,
-    variable.names = "alpha",
+    variable.names = NULL,
     model = model_default),
   val = method_control)
 
@@ -104,20 +105,31 @@ close(model)
 jags_output <-
   rjags::coda.samples(
     model = jags,
-    variable.names = method_control$variable.names,
+    variable.names = c("alpha", method_control$variable.names),
     n.iter = method_control$n.iter,
     thin = method_control$thin
   )
 
-## calculate HPD
-HPD <- coda::HPDinterval(jags_output)
 
-## set new RLum curve
-curve <- Luminescence::set_RLum(class = "RLum.Data.Curve",
-                  curveType = "RF",
-                  data = matrix(c(as.numeric(rownames(data)), rowMeans(
-                    matrix(unlist(HPD), ncol = 2 * method_control$n.chain)
-                  )), ncol = 2))
+## extract only alpha values, this way we can observe more variables
+## without trashing the curve
+alpha <- coda::as.mcmc.list(lapply(jags_output, function(x){
+  x[,grepl(coda::varnames(jags_output), pattern = "alpha", fixed = TRUE), drop = FALSE]
+
+}))
+
+## calculate HPD for alpha
+HPD <- coda::HPDinterval(alpha)
+
+## set new RLum object
+curve <- Luminescence::set_RLum(
+  class = "RLum.Data.Curve",
+  curveType = "RF",
+  data = matrix(
+    c(as.numeric(rownames(data)),
+      rowMeans(matrix(unlist(HPD), ncol = 2 * method_control$n.chain))),
+    ncol = 2))
 
 return(list(curve = curve, jags_output = jags_output))
 }
+
