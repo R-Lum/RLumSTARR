@@ -18,7 +18,8 @@ Supported are \code{n.chain}, \code{n.iter}, \code{thin}, \code{variable.names},
 \value{
 Returns a list with an \link[Luminescence:RLum.Data.Curve-class]{Luminescence::RLum.Data.Curve} object
 (the RF curve with the true light) and the \link[rjags:coda.samples]{rjags::coda.samples} output for
-further processing.
+further processing. \emph{Note: Regardless the observed variable, the parameter alpha
+will be always be used to create the curve}
 }
 \description{
 Run the Bayesian model to extract the true light from a ROI
@@ -37,6 +38,6 @@ Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United K
 , RLum Developer Team} 
 
 \section{How to cite}{
-Kreutzer, S., 2020. extract_TRUELight(): Extract True Light from the Camera measurements using a Bayesian Approach. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2020. RLumSTARR: Spatially Resolved Radiofluorescence Analysis. R package version 0.1.0.9000-28. 
+Kreutzer, S., 2020. extract_TRUELight(): Extract True Light from the Camera measurements using a Bayesian Approach. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2020. RLumSTARR: Spatially Resolved Radiofluorescence Analysis. R package version 0.1.0.9000-29. 
 }
 
