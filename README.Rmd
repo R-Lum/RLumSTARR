@@ -15,6 +15,8 @@ knitr::opts_chunk$set(
 library(RLumSTARR)
 ```
 
+## RLumSTARR 
+
 **S**pa**T**i**A**lly **R**esolved **R**adiofluorescence
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
