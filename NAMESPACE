@@ -2,6 +2,7 @@
 
 export(create_RFCurveArray)
 export(extract_TRUELight)
+export(get_MCMCParameter)
 export(run_ImageJ)
 import(methods)
 importFrom(utils,modifyList)
