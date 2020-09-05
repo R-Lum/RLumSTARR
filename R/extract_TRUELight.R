@@ -36,30 +36,33 @@ model_default <- "model {
   for (i in 1:TIMES) {
      ##priors
      alpha[i] ~ dnorm(0, 1) T(0, )
-     beta[i] ~ dnorm(0, 1) T(0, )
+     #beta[i] ~ dnorm(0, 1)  T(0, )
 
      a_alpha[i] ~ dnorm(0.2, 1/(0.2^2)) T(0.1, 1)
      b_alpha[i] ~ dnorm(50, 1/(25^2)) T(0, )
 
-     a_beta[i] ~ dnorm(0.2, 1/(0.2^2)) T(0.1, 1)
-     b_beta[i] ~ dnorm(50, 1/(25^2)) T(0, )
+     # a_beta[i] ~ dnorm(0.2, 1/(0.2^2)) T(0.1, 1)
+     # b_beta[i] ~ dnorm(50, 1/(25^2)) T(0, )
 
 
      for (j in 1:length(ROI_AREA)) {
        ##set liklihoods
-       # Y[i, j] ~ dnorm(phi[i, j] + omega[i, j], 1)
-       Y[i, j] ~ dnorm(phi[i, j] + omega[i,j] + epsilon[i, j], 1)
+       Y[i, j] ~ dnorm(mu[i, j], 1)
 
-         ##the internal light contribution
-         phi.star[i,j] <- alpha[i] * delta_alpha[i, j]
-         delta_alpha[i, j] <- 1 - a_alpha[i] * exp(-ROI_AREA[j] / b_alpha[i])
+       ##set total signal outcome
+       mu[i, j] <- phi[i, j] + omega[i, j] + epsilon[i, j]
 
-         ##external light contribution
-         omega.star[i, j] <- beta[i] * delta_beta[i, j]
-         delta_beta[i, j] <- 1 - a_beta[i] * exp(-ROI_AREA[j] / b_beta[i])
+       ##the internal light contribution
+       phi.star[i,j] <- alpha[i] * delta_alpha[i, j]
+       delta_alpha[i, j] <- 1 - a_alpha[i] * exp(-ROI_AREA[j] / b_alpha[i])
 
-         ## error component ... it looks like a normal distribution
-         epsilon[i, j] ~ dnorm(500,1)
+       ##external light contribution
+       omega.star[i, j] ~ dnorm(0, 1)  T(0, )
+       #omega.star[i, j] <- beta[i] * delta_beta[i, j]
+       #delta_beta[i, j] <- 1 - a_beta[i] * exp(-ROI_AREA[j] / b_beta[i])
+
+       ## error component ... it looks like a normal distribution
+       epsilon[i, j] ~ dnorm(500,1)
 
      }
      ## apply ordering constraints
