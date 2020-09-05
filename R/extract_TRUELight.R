@@ -113,22 +113,13 @@ jags_output <-
 
 ## extract only alpha values, this way we can observe more variables
 ## without trashing the curve
-alpha <- coda::as.mcmc.list(lapply(jags_output, function(x){
-  x[,grepl(coda::varnames(jags_output), pattern = "alpha", fixed = TRUE), drop = FALSE]
-
-}))
-
-## calculate HPD for alpha
-HPD <- coda::HPDinterval(alpha)
+alpha <- get_MCMCParameter(jags_output, "alpha")
 
 ## set new RLum object
 curve <- Luminescence::set_RLum(
   class = "RLum.Data.Curve",
   curveType = "RF",
-  data = matrix(
-    c(as.numeric(rownames(data)),
-      rowMeans(matrix(unlist(HPD), ncol = 2 * method_control$n.chain))),
-    ncol = 2))
+  data = cbind(as.numeric(rownames(data)), alpha))
 
 return(list(curve = curve, jags_output = jags_output))
 }
