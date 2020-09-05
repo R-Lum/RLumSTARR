@@ -40,6 +40,6 @@ Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United K
 , RLum Developer Team} 
 
 \section{How to cite}{
-Kreutzer, S., 2020. get_MCMCParameter(): Extracts a parameter from an MCMC list. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2020. RLumSTARR: Spatially Resolved Radiofluorescence Analysis. R package version 0.1.0.9000-31. 
+Kreutzer, S., 2020. get_MCMCParameter(): Extracts a parameter from an MCMC list. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2020. RLumSTARR: Spatially Resolved Radiofluorescence Analysis. R package version 0.1.0.9000-35. 
 }
 
