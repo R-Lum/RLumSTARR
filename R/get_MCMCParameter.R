@@ -43,7 +43,7 @@ get_MCMCParameter <- function(
          paste(valid_names, collapse= ", "), call. = FALSE)
 
   ## extract parameter
-  l <- mcmc[,grepl(coda::varnames(mcmc), pattern = parameter[1], fixed = TRUE)]
+  l <- mcmc[,grepl(coda::varnames(mcmc), pattern = paste0("^",parameter[1]))]
 
   ##if the list is more complex we have to be do more ... we only test
   ##the first because it should be ok for the rest
@@ -60,3 +60,4 @@ get_MCMCParameter <- function(
   if(unlist) matrix(rowMeans(matrix(unlist(l), ncol = 2 * length(l))), ncol = ncol)
 
 }
+
