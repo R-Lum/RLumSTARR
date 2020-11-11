@@ -79,7 +79,7 @@ outlier_threshold = 300;
 outlier_tracer_radius = 3;
 
 // Image alignment: Translation interpolation mode
-alignment_interpolation = "None"; //available: "None", "Bilinear", "Bicubic"
+alignment_interpolation = "Bicubic"; //available: "None", "Bilinear", "Bicubic"
 
 //Lock-up table for the image colouring
 //display_LUT = "Blue Orange icb" // reasonable compromise between Gray and spectral view ... and looks nice
