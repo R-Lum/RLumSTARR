@@ -7,7 +7,7 @@
 macro "SR-RF" {
 //
   macro_version = "0.1.0";
-  macro_date = "2020-08-12";
+  macro_date = "2020-09-21";
 //
 //
 ////////////////////////////////////////////////////////////////////////////////
@@ -79,7 +79,7 @@ outlier_threshold = 300;
 outlier_tracer_radius = 3;
 
 // Image alignment: Translation interpolation mode
-alignment_interpolation = "Bilinear"; //available: "None", "Bilinear", "Bicubic"
+alignment_interpolation = "None"; //available: "None", "Bilinear", "Bicubic"
 
 //Lock-up table for the image colouring
 //display_LUT = "Blue Orange icb" // reasonable compromise between Gray and spectral view ... and looks nice
