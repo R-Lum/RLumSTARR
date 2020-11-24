@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 library(RLumSTARR)
 ```
 
-## RLumSTARR 
+# RLumSTARR <img width=120px src="man/figures/RLumSTARR_Logo.png" align="right" />
 
 **S**pa**T**i**A**lly **R**esolved **R**adiofluorescence
 
@@ -40,7 +40,7 @@ any later version.
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 [GNU General Public License](https://github.com/R-Lum/RLumSTARR/blob/master/LICENSE) for more details.
 
 ## Related projects 
