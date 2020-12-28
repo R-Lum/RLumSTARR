@@ -11,7 +11,8 @@
 
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
-developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+developed.](https://www.repostatus.org/badges/latest/concept.svg)](https://www.repostatus.org/#concept)
+[![CRAN](https://www.r-pkg.org/badges/version/RLumSTARR)](https://cran.r-project.org/package=RLumSTARR)
 
 ## Installation
 
