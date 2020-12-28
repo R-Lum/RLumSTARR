@@ -2,7 +2,7 @@
 % Please edit documentation in R/extract_TRUELight.R
 \name{extract_TRUELight}
 \alias{extract_TRUELight}
-\title{Extract True Light from the Camera measurements using a Bayesian
+\title{Extract True Light from the Camera Measurements using a Bayesian
 Approach}
 \usage{
 extract_TRUELight(data, ROI = 1, method_control = list())
@@ -22,7 +22,9 @@ further processing. \emph{Note: Regardless the observed variable, the parameter 
 will be always be used to create the curve}
 }
 \description{
-Run the Bayesian model to extract the true light from a ROI
+A Bayesian modelling approach to extract the true light using the
+expanding region-of-interest (ROI) approach proposed by Cunningham and Clark-Balzan (2017).
+The function will return the results for a single curve.
 }
 \section{Function version}{
  0.1.0
@@ -32,12 +34,17 @@ Run the Bayesian model to extract the true light from a ROI
 
 ##TODO
 
+} 
+
+\section{How to cite}{
+Kreutzer, S., 2020. extract_TRUELight(): Extract True Light from the Camera Measurements using a Bayesian Approach. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2020. RLumSTARR: Spatially Resolved Radiofluorescence Analysis. R package version 0.1.0.9000-53. 
+}
+
+\references{
+Cunningham, A.C., Clark-Balzan, L., 2017. Overcoming crosstalk in
+luminescence images of mineral grains. Radiation Measurements 106, 498–505.
+doi:10.1016/j.radmeas.2017.06.004
 }
 \author{
 Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom)
-, RLum Developer Team} 
-
-\section{How to cite}{
-Kreutzer, S., 2020. extract_TRUELight(): Extract True Light from the Camera measurements using a Bayesian Approach. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2020. RLumSTARR: Spatially Resolved Radiofluorescence Analysis. R package version 0.1.0.9000-35. 
-}
-
+, RLum Developer Team}

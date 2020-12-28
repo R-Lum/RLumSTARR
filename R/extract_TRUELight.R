@@ -42,20 +42,15 @@ model_default <- "model {
   for (i in 1:TIMES) {
      ##priors
      alpha[i] ~ dlnorm(0, 1) T(0, )
-     #beta[i] ~ dnorm(0, 1) T(0, )
 
      a_alpha[i] ~ dnorm(0.2, 1/(0.2^2)) T(0.1, 1)
-     b_alpha[i] ~ dnorm(50, 1/(25^2)) T(0, )
-
-     #a_beta[i] ~ dnorm(0.2, 1/(0.2^2)) T(0.1, 1)
-     #b_beta[i] ~ dnorm(50, 1/(25^2)) T(0, )
+     b_alpha[i] ~ dnorm(1, 1/(25^2)) T(0, )
 
      for (j in 1:length(ROI_AREA)) {
        ##set liklihoods
-       # Y[i, j] ~ dnorm(phi[i, j] + omega[i, j], 1)
        Y[i, j] ~ dnorm(mu[i,j], 1)
 
-         ##
+         ##parameters
          mu[i,j] <- phi[i, j] + omega[i,j] + epsilon[i,j]
 
          ##the internal light contribution
@@ -63,12 +58,10 @@ model_default <- "model {
          delta_alpha[i, j] <- 1 - a_alpha[i] * exp(-ROI_AREA[j] / b_alpha[i])
 
          ##external light contribution
-         # omega.star[i, j] <- beta[i] * delta_beta[i, j]
-         # delta_beta[i, j] <- 1 - a_beta[i] * exp(-ROI_AREA[j] / b_beta[i])
          omega.star[i,j] ~ dlnorm(0,1)
 
          ## error component ... it looks like a normal distribution
-         epsilon[i, j] ~ dnorm(500,1)
+         epsilon[i, j] ~ dnorm(600,1)
 
      }
      ## apply ordering constraints
