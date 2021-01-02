@@ -13,7 +13,7 @@ data
 \bold{Funding}
 \itemize{
 \item Sebastian Kreutzer received funding from the European Union’s Horizon 2020
-research and innovation programme under the Marie Skłodowska-Curie grant agreement No 844457.
+research and innovation programme under the Marie Skłodowska-Curie grant agreement No 844457 (CREDit).
 }
 }
 \references{
@@ -21,6 +21,6 @@ research and innovation programme under the Marie Skłodowska-Curie grant agreem
 }
 \author{
 Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom) \cr
-Dirk Mittelstrass, TU Dresden (Germany)
+Dirk Mittelstrass (Germany)
 , RLum Developer Team}
 \keyword{package}
