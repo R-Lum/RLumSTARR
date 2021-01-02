@@ -44,6 +44,10 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 [GNU General Public License](https://github.com/R-Lum/RLumSTARR/blob/master/LICENSE) for more details.
 
+## Funding 
+
+Sebastian Kreutzer received funding from the European Union’s Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No [844457 (project: CREDit)](https://cordis.europa.eu/project/id/844457).
+
 ## Related projects 
 
 * [Luminescence](https://github.com/R-Lum/Luminescence)
