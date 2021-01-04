@@ -13,6 +13,10 @@
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/concept.svg)](https://www.repostatus.org/#concept)
 [![CRAN](https://www.r-pkg.org/badges/version/RLumSTARR)](https://cran.r-project.org/package=RLumSTARR)
+[![R-CMD-check](https://github.com/R-Lum/RLumSTARR/workflows/GitHub%20Actions%20CI/badge.svg)](https://github.com/R-Lum/RLumSTARR/actions)
+
+**Note: This is an experimental R package and not (yet) recommended for
+productive usage.**
 
 ## Installation
 

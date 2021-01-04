@@ -17,10 +17,13 @@ library(RLumSTARR)
 
 # RLumSTARR <img width=120px src="man/figures/RLumSTARR_logo.png" align="right" />
 
-**S**pa**T**i**A**lly **R**esolved **R**adiofluorescence
+**S**pa**T**i**A**lly **R**esolved **R**adiofluorescence 
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/concept.svg)](https://www.repostatus.org/#concept)
 [![CRAN](https://www.r-pkg.org/badges/version/RLumSTARR)](https://cran.r-project.org/package=RLumSTARR)
+[![R-CMD-check](https://github.com/R-Lum/RLumSTARR/workflows/GitHub Actions CI/badge.svg)](https://github.com/R-Lum/RLumSTARR/actions)
+
+**Note: This is an experimental R package and not (yet) recommended for productive usage.**
 
 ## Installation
 
