@@ -7,6 +7,7 @@
 run_TRUELightExtraction(
   data,
   ROI,
+  stepping = 1,
   mc.cores = max(c(1, parallel::detectCores() - 2)),
   method_control = list(),
   include_jags_output = FALSE,
@@ -18,6 +19,9 @@ run_TRUELightExtraction(
 
 \item{ROI}{[numeric] (*optional*): ROIs to be analysed, if nothing is given
 all ROIs are analysed, however, the first ROIS is discarded!}
+
+\item{stepping}{[numeric] (*with default*): the stepping parameter from and to
+be passed to [extract_TRUELight]}
 
 \item{mc.cores}{[numeric] (*with default*): number of cores used for the processing,
 passed to [parallel::mclapply]}
@@ -70,6 +74,6 @@ Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United K
 , RLum Developer Team} 
 
 \section{How to cite}{
-Kreutzer, S., 2021. run_TRUELightExtraction(): Run Automated TRUE-Light Extraction. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-82. 
+Kreutzer, S., 2021. run_TRUELightExtraction(): Run Automated TRUE-Light Extraction. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-83. 
 }
 

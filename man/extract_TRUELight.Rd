@@ -23,8 +23,8 @@ extract_TRUELight(
 \item{ROI}{\link{numeric} (\emph{optional}): ROI to be analysed, if nothing is given
 all ROIs are analysed, however, the first ROIS is discarded!}
 
-\item{stepping}{\link{numeric} (\emph{with default}): stepping paramter that allows
-you to model only every xth (the value in \code{stepping}). This option can be extremly
+\item{stepping}{\link{numeric} (\emph{with default}): stepping parameter that allows
+you to model only every xth (the value in \code{stepping}). This option can be extremely
 useful to play with data because it dramatically improves the modelling speed because
 less data are considered.}
 
@@ -91,7 +91,7 @@ extract_TRUELight(
 } 
 
 \section{How to cite}{
-Kreutzer, S., 2021. extract_TRUELight(): Extract True Light from the Camera Measurements using a Bayesian Approach. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-82. 
+Kreutzer, S., 2021. extract_TRUELight(): Extract True Light from the Camera Measurements using a Bayesian Approach. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-83. 
 }
 
 \references{
