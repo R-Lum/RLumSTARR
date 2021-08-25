@@ -40,6 +40,7 @@ get_MCMCParameter <- function(
     mcmc <- mcmc[["jags_output"]]
 
   ## set parameters for column
+  ncol <- 1
   valid_names <- unlist(strsplit(coda::varnames(mcmc),"[",TRUE))
   valid_names <- unique(valid_names[seq(1, length(valid_names), 2)])
 
@@ -63,11 +64,10 @@ get_MCMCParameter <- function(
   ## calculate HPD interval and condense into matrix if needed
   l <- coda::HPDinterval(l, prob = prob[1])
   if(unlist) {
-     l <- matrix(rowMeans(matrix(unlist(l), ncol = 2 * length(l))), ncol = 1)
+     l <- matrix(rowMeans(matrix(unlist(l), ncol = 2 * length(l))), ncol = ncol)
      colnames(l) <- parameter[1]
   }
 
 # Return ------------------------------------------------------------------
   return(l)
 }
-
