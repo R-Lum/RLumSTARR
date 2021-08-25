@@ -66,6 +66,7 @@
 #'extract_TRUELight(
 #'  data = dat,
 #'  ROI = c(4),
+#'  stepping = 10,
 #'  verbose = FALSE,
 #'  method_control = list(
 #'    n.chain = 1,

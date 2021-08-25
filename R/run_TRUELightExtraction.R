@@ -32,6 +32,7 @@
 #'
 #'@examples
 #'
+#'\dontrun{
 #'## list files using package external data
 #'files <- list.files(system.file("extdata", "", package="RLumSTARR"), full.names=TRUE)
 #'## create curve array
@@ -45,6 +46,7 @@
 #'  n.chain = 1,
 #'  n.iter = 50,
 #'  thin = 20))
+#'}
 #'
 #'@export
 run_TRUELightExtraction <- function(
