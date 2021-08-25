@@ -3,19 +3,48 @@
 #'
 #'@description A Bayesian modelling approach to extract the true light using the
 #'expanding region-of-interest (ROI) approach proposed by Cunningham and Clark-Balzan (2017).
-#'The function will return the results for a single curve.
+#'The function will return the results for a **single** curve from a **single** ROI
 #'
-#'@param data [array] (**required**): curve array created by [create_RFCurveArray]
+#'@details
 #'
-#'@param ROI [numeric] (*with default*): ROI to be analysed
+#'**Method control**
+#'
+#'Supported options to be passed via the parameter `method_control`, most
+#'of them are used internally for the calls to [rjags::jags.model] and [rjags::coda.samples].
+#'
+#'\tabular{lll}{
+#'**PARAMETER** \tab **TYPE** \tab **DESCRIPTION**\cr
+#'`n.chain` \tab [numeric] \tab the number of MCMC chains \cr
+#'`n.iter` \tab [numeric] \tab number of iterations for the MC runs \cr
+#'`thin` \tab [numeric] \tab thinning interval used for the monitoring \cr
+#'`variable.names` \tab [character] \tab variable names to monitor, `alpha` is always monitored \cr
+#'`model` \tab [character] \tab the bugs model
+#'}
+#'
+#'@param data [array] (**required**): object created by [create_RFCurveArray]
+#'
+#'@param element [character] (*with default*): element from the input to be analysed,
+#''supported are only `RF_nat` or `RF_reg`
+#'
+#'@param ROI [numeric] (*optional*): ROI to be analysed, if nothing is given
+#'all ROIs are analysed, however, the first ROIS is discarded!
 #'
 #'@param method_control [list] (*optional*): parameter to be passed to `rjags`.
-#'Supported are `n.chain`, `n.iter`, `thin`, `variable.names`, `model`
+#'Supported are `n.chain`, `n.iter`, `thin`, `variable.names`, `model`, see details for more.
 #'
-#'@return Returns a list with an [Luminescence::RLum.Data.Curve-class] object
-#'(the RF curve with the true light) and the [rjags::coda.samples] output for
-#'further processing. *Note: Regardless the observed variable, the parameter alpha
-#'will be always be used to create the curve*
+#'@param verbose [logical] (*with default*): enable/disable terminal feedback
+#'
+#'@return Returns a list with an the following elements:
+#'
+#' `...$RF_curve`: [Luminescence::RLum.Data.Curve-class] object
+#'(the RF curve with the true light)
+#'
+#'`...$rjags_model`: [rjags::coda.samples] output for further processing.
+#'*Note: Regardless the observed variable, the parameter alpha
+#'will always be used to create the curve*
+#'
+#'`...$model`: the model used to run the Bayesian process, use [writeLines] to have
+#'nicely formatted terminal output
 #'
 #'@section Function version: 0.1.0
 #'
@@ -23,19 +52,46 @@
 #'
 #'@examples
 #'
-#'##TODO
+#'## list files using package external data
+#'files <- list.files(system.file("extdata", "", package="RLumSTARR"), full.names=TRUE)
+#'
+#'## create curve array
+#'dat <- create_RFCurveArray(files = files)
+#'output <-
+#'extract_TRUELight(
+#'  data = dat,
+#'  ROI = c(4),
+#'  verbose = FALSE,
+#'  method_control = list(
+#'    n.chain = 1,
+#'    n.iter = 50,
+#'    thin = 20))
 #'
 #'@references Cunningham, A.C., Clark-Balzan, L., 2017. Overcoming crosstalk in
 #'luminescence images of mineral grains. Radiation Measurements 106, 498–505.
 #'doi:10.1016/j.radmeas.2017.06.004
 #'
+#'@seealso [create_RFCurveArray], [get_MCMCParameter]
+#'
 #'@md
 #'@export
 extract_TRUELight <- function(
   data,
-  ROI = 1,
-  method_control = list()
+  element = c("RF_nat", "RF_reg"),
+  ROI = 2,
+  method_control = list(),
+  verbose = TRUE
 ) {
+
+# Input check -------------------------------------------------------------
+if(attr(data, "class") != "RLumSTARR.RFCurveArray")
+  stop("[extract_TRUELight()] input must be of type RLumSTARR.RFCurveArray!", call. = FALSE)
+
+if(!any(element[1] %in% names(data)))
+  stop("[extract_TRUELight()] element invalid", call. = FALSE)
+
+## select
+data <- data[[element[1]]]
 
 # Bayesian model core -----------------------------------------------------
 model_default <- "model {
@@ -74,27 +130,28 @@ model_default <- "model {
 
 # Bayesian process --------------------------------------------------------
 method_control <- modifyList(x = list(
-    n.chain = 1,
-    n.iter = 200,
+    n.chain = 3,
+    n.iter = 2000,
     thin = 20,
     variable.names = NULL,
     model = model_default),
   val = method_control)
 
-##extract area values ... we skip the first ROI, since this is the biggest
-##TODO: this might crash
-Y <- data[,ROI[1],]
+## take input
+Y <- data[,abs(ROI[1]),]
+
 temp_area <- unlist(strsplit(dimnames(data)[[3]], ","))
 roi_area <- as.numeric(temp_area[seq(2,length(temp_area),dim(data)[2])])
 colnames(Y) <- roi_area
 
 ##set model (we do this here to close the model connect)
-model <- textConnection(method_control$model)
+model <- textConnection(method_control$model[1])
 
 ##set jags model
 jags <- rjags::jags.model(
     file = model,
-    n.chain = method_control$n.chain,
+    n.chain = method_control$n.chain[1],
+    quiet = !verbose[1],
     data = list(
       Y = Y,
       ROI_AREA = roi_area,
@@ -108,8 +165,9 @@ jags_output <-
   rjags::coda.samples(
     model = jags,
     variable.names = c("alpha", method_control$variable.names),
-    n.iter = method_control$n.iter,
-    thin = method_control$thin
+    n.iter = method_control$n.iter[1],
+    thin = method_control$thin[1],
+    progress.bar = if(verbose[1]) 'text' else 'none'
   )
 
 
@@ -123,6 +181,8 @@ curve <- Luminescence::set_RLum(
   curveType = "RF",
   data = cbind(as.numeric(rownames(data)), alpha))
 
-return(list(curve = curve, jags_output = jags_output))
-}
+output <- list(RF_curve = curve, jags_output = jags_output, model = method_control$model[1])
+attr(output, "class") <- "RLumSTARR.TRUELight"
 
+return(output)
+}
