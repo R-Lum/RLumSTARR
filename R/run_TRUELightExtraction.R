@@ -80,7 +80,7 @@ run_TRUELightExtraction <- function(
       system(paste("echo '--[+] running extraction ",i," ROI: ", x, "'"))
       records[[i]] <- extract_TRUELight(
         data,
-        element = "RF_nat",
+        element = i,
         ROI = x,
         verbose = FALSE,
         method_control = method_control)
