@@ -29,6 +29,11 @@
 #'@param ROI [numeric] (*optional*): ROI to be analysed, if nothing is given
 #'all ROIs are analysed, however, the first ROIS is discarded!
 #'
+#'@param stepping [numeric] (*with default*): stepping paramter that allows
+#'you to model only every xth (the value in `stepping`). This option can be extremly
+#'useful to play with data because it dramatically improves the modelling speed because
+#'less data are considered.
+#'
 #'@param method_control [list] (*optional*): parameter to be passed to `rjags`.
 #'Supported are `n.chain`, `n.iter`, `thin`, `variable.names`, `model`, see details for more.
 #'
@@ -79,6 +84,7 @@ extract_TRUELight <- function(
   data,
   element = c("RF_nat", "RF_reg"),
   ROI = 2,
+  stepping = 1,
   method_control = list(),
   verbose = TRUE
 ) {
@@ -138,7 +144,7 @@ method_control <- modifyList(x = list(
   val = method_control)
 
 ## take input
-Y <- data[,abs(ROI[1]),]
+Y <- data[seq(1,nrow(data),stepping[1]),abs(ROI[1]),]
 
 temp_area <- unlist(strsplit(dimnames(data)[[3]], ","))
 roi_area <- as.numeric(temp_area[seq(2,length(temp_area),dim(data)[2])])
