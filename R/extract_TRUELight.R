@@ -178,7 +178,8 @@ alpha <- get_MCMCParameter(jags_output, "alpha")
 ## set new RLum object
 curve <- Luminescence::set_RLum(
   class = "RLum.Data.Curve",
-  curveType = "RF",
+  recordType = "RF",
+  curveType = "measured",
   data = cbind(as.numeric(rownames(data)), alpha))
 
 output <- list(RF_curve = curve, jags_output = jags_output, model = method_control$model[1])
