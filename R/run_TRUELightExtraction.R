@@ -119,7 +119,7 @@ run_TRUELightExtraction <- function(
       FUN = .fun,
       method_control = method_control,
       mc.cores = mc.cores,
-      steppinng = stepping[1],
+      stepping = stepping[1],
       include_jags_output = include_jags_output
     )
   if(verbose) cli::cat_rule("DONE")
