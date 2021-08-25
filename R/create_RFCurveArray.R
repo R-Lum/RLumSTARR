@@ -74,9 +74,10 @@ dimnames(RF_nat) <- list(RF_nat_time, paste0("ROI_",rownames(ROI_AREA)), dim_nam
 dimnames(RF_reg) <- list(RF_reg_time, paste0("ROI_",rownames(ROI_AREA)), dim_name)
 
 ## generate output and set class
-output <- list(RF_nat, RF_reg)
+output <- list(RF_nat = RF_nat, RF_reg = RF_reg)
 attr(output, "class") <- "RLumSTARR.RFCurveArray"
 attr(output, "array_dim_names") <- c(rows = "time", cols = "ROI ID", slices = "ROI area")
 
 return(output)
 }
+
