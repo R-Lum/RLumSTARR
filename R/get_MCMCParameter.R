@@ -65,9 +65,10 @@ get_MCMCParameter <- function(
   l <- coda::HPDinterval(l, prob = prob[1])
   if(unlist) {
      l <- matrix(rowMeans(matrix(unlist(l), ncol = 2 * length(l))), ncol = ncol)
-     colnames(l) <- parameter[1]
+     colnames(l) <- paste0(parameter[1],"_",1:ncol)
   }
 
 # Return ------------------------------------------------------------------
   return(l)
 }
+
