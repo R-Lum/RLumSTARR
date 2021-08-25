@@ -48,8 +48,8 @@ ROI_table <- lapply(1:length(files), function(x) {
   cbind(GROUP = x, df, sum_RF_nat = signal[,1], sum_RF_reg  = signal[,2])
 })
 
-## extract ROI information
-ROI_AREA <- vapply(ROI_table, function(x) x[,c("area")], numeric(nrow(ROI_table[[1]])))
+## extract ROI area information
+ROI_AREA <- vapply(ROI_table, function(x) x[,"area"], numeric(nrow(ROI_table[[1]])))
 
 ## create super array RF_nat
 RF_nat_time <- files[[1]][[1]]@records[[1]][,1]
@@ -70,12 +70,13 @@ for(i in 1:dim(RF_nat)[3]){
 
 ## set dimnames
 dim_name <- vapply(1:ncol(ROI_AREA), function(x) paste(ROI_AREA[,x], collapse = ", "), character(1))
-dimnames(RF_nat) <- list(RF_nat_time, rownames(ROI_AREA), dim_name)
-dimnames(RF_reg) <- list(RF_reg_time, rownames(ROI_AREA), dim_name)
+dimnames(RF_nat) <- list(RF_nat_time, paste0("ROI_",rownames(ROI_AREA)), dim_name)
+dimnames(RF_reg) <- list(RF_reg_time, paste0("ROI_",rownames(ROI_AREA)), dim_name)
 
 ## generate output and set class
 output <- list(RF_nat, RF_reg)
 attr(output, "class") <- "RLumSTARR.RFCurveArray"
+attr(output, "array_dim_names") <- c(rows = "time", cols = "ROI ID", slices = "ROI area")
 
 return(output)
 }
