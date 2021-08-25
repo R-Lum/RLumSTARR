@@ -30,7 +30,6 @@
 #'
 #'@author Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom)
 #'
-#'
 #'@examples
 #'
 #'## list files using package external data
@@ -63,9 +62,13 @@ run_TRUELightExtraction <- function(
   if(verbose) {
     cat("\n[run_TRULightExtraction()]\n\n")
     cli::cli_alert_success("Setting up functions")
-    if(length(method_control) > 1){
+    if(length(method_control) > 0){
+      text <- method_control
+
+      if(!is.null(text$model)) text$model <- "<user defined model>"
+
       cli::cli_alert_info("Applying user-defined modelling parameters:")
-      cat("  -->", paste(paste0("  ",names(method_control), ": ",method_control)), "\n")
+      cat("  -->", paste(paste0("  ",names(text), ": ",text)), "\n")
 
     }
     cli::cli_alert_info("Entering number-crunching ... ")
