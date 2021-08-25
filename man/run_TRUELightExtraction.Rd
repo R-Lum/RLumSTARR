@@ -48,6 +48,7 @@ mode using [parallel::mclapply].
 
 \examples{
 
+\dontrun{
 ## list files using package external data
 files <- list.files(system.file("extdata", "", package="RLumSTARR"), full.names=TRUE)
 ## create curve array
@@ -61,6 +62,7 @@ method_control = list(
  n.chain = 1,
  n.iter = 50,
  thin = 20))
+}
 
 }
 \author{
@@ -68,6 +70,6 @@ Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United K
 , RLum Developer Team} 
 
 \section{How to cite}{
-Kreutzer, S., 2021. run_TRUELightExtraction(): Run Automated TRUE-Light Extraction. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-79. 
+Kreutzer, S., 2021. run_TRUELightExtraction(): Run Automated TRUE-Light Extraction. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-82. 
 }
 
