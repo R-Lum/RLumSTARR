@@ -39,7 +39,7 @@
 #' `...$RF_curve`: [Luminescence::RLum.Data.Curve-class] object
 #'(the RF curve with the true light)
 #'
-#'`...$rjags_model`: [rjags::coda.samples] output for further processing.
+#'`...$rjags_output`: [rjags::coda.samples] output for further processing.
 #'*Note: Regardless the observed variable, the parameter alpha
 #'will always be used to create the curve*
 #'
