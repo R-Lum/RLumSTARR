@@ -161,7 +161,7 @@ jags <- rjags::jags.model(
     data = list(
       Y = Y,
       ROI_AREA = roi_area,
-      TIMES = nrow(data))
+      TIMES = nrow(Y))
 )
 
 close(model)
@@ -186,7 +186,7 @@ curve <- Luminescence::set_RLum(
   class = "RLum.Data.Curve",
   recordType = "RF",
   curveType = "measured",
-  data = cbind(as.numeric(rownames(data)), alpha))
+  data = cbind(as.numeric(rownames(Y)), alpha))
 
 output <- list(RF_curve = curve, jags_output = jags_output, model = method_control$model[1])
 attr(output, "class") <- "RLumSTARR.TRUELight"
