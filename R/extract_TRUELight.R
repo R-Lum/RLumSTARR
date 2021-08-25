@@ -29,8 +29,8 @@
 #'@param ROI [numeric] (*optional*): ROI to be analysed, if nothing is given
 #'all ROIs are analysed, however, the first ROIS is discarded!
 #'
-#'@param stepping [numeric] (*with default*): stepping paramter that allows
-#'you to model only every xth (the value in `stepping`). This option can be extremly
+#'@param stepping [numeric] (*with default*): stepping parameter that allows
+#'you to model only every xth (the value in `stepping`). This option can be extremely
 #'useful to play with data because it dramatically improves the modelling speed because
 #'less data are considered.
 #'
