@@ -1,19 +1,27 @@
-#'@title Create Multidimensional Curve Arrays from File input
+#'@title Create Multidimensional Curve Arrays from RF File input
 #'
-#'@description Helper function to create a multidimensional curve array to
-#'prepare the Bayesian process
+#'@description Helper function to create a multidimensional curve array based on
+#'RF-file input imported using the function `Luminescence::read_RF2R()` to
+#'prepare the Bayesian modelling process
 #'
 #'@param files [list] (**required**): list of `.rf` files to be imported
 #'
-#'@return Returns a list with two arrays for the `RF_nat` and the `RF_reg` curve
+#'@return Returns a list of class `RLumSTARR.RFCurveArrary` with two arrays for the `RF_nat`
+#'and the `RF_reg` curve
 #'
 #'@section Function version: 0.1.0
 #'
 #'@author Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom)
 #'
+#'@seealso [Luminescence::read_RF2R]
+#'
 #'@examples
 #'
-#'##TODO
+#'## list files using package external data
+#'files <- list.files(system.file("extdata", "", package="RLumSTARR"), full.names=TRUE)
+#'
+#'## create curve array
+#'create_RFCurveArray(files = files)
 #'
 #'@md
 #'@export
@@ -21,11 +29,12 @@ create_RFCurveArray <- function(
   files
 ){
 
+
 ## import files (we do not use the self-call option on purpose)
 files <- lapply(files, Luminescence::read_RF2R)
 
+## generate ROI table
 ROI_table <- lapply(1:length(files), function(x) {
-
   ##get ROI information
   df <- Luminescence::plot_ROI(files[[x]], plot = FALSE)$ROI
 
@@ -64,5 +73,9 @@ dim_name <- vapply(1:ncol(ROI_AREA), function(x) paste(ROI_AREA[,x], collapse = 
 dimnames(RF_nat) <- list(RF_nat_time, rownames(ROI_AREA), dim_name)
 dimnames(RF_reg) <- list(RF_reg_time, rownames(ROI_AREA), dim_name)
 
-return(list(RF_nat, RF_reg))
+## generate output and set class
+output <- list(RF_nat, RF_reg)
+attr(output, "class") <- "RLumSTARR.RFCurveArray"
+
+return(output)
 }
