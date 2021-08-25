@@ -3,14 +3,17 @@
 #'@description Short cut to extract a parameter from an MCMC list. If more processing
 #'is wanted, the `'coda'` package can be used
 #'
-#'@param mcmc [coda::mcmc] or [coda::mcmc.list] (**required**) input
+#'@param mcmc [coda::mcmc] or [coda::mcmc.list] (**required**): input object,
+#'if created by [extract_TRUELight] the correct object is extracted automatically
 #'
 #'@param parameter [character] (**required**): name of the parameter to be extracted
 #'
-#'@param prob [numeric] (*with default*): probability for the HPD calculation
+#'@param prob [numeric] (*with default*): probability for the HPD calculation (cf. [coda::HPDinterval])
 #'
-#'@param unlist [logical] (*with default*): if `TRUE` the output is a [matrix]
-#'otherwise a [list]
+#'@param unlist [logical] (*with default*): if `TRUE` the output is a [matrix] of the means
+#'of the lower and upper intervals of the parameter. If the parameter was estimated based on
+#'multiple chains, this chains are also subject to an average calculation. If `FALSE` the output is a
+#'[list] as returned by [coda::HPDinterval]
 #'
 #'@return Returns a matrix with the parameter value or a [list]
 #'
@@ -32,8 +35,11 @@ get_MCMCParameter <- function(
   prob = 0.95,
   unlist = TRUE
 ) {
+  ##add support objects from this package
+  if(attr(mcmc, "class") == "RLumSTARR.TRUELight")
+    mcmc <- mcmc[["jags_output"]]
+
   ## set parameters for column
-  ncol <- 1
   valid_names <- unlist(strsplit(coda::varnames(mcmc),"[",TRUE))
   valid_names <- unique(valid_names[seq(1, length(valid_names), 2)])
 
@@ -54,10 +60,14 @@ get_MCMCParameter <- function(
 
   }
 
-  ## calculate HPD interval
+  ## calculate HPD interval and condense into matrix if needed
   l <- coda::HPDinterval(l, prob = prob[1])
+  if(unlist) {
+     l <- matrix(rowMeans(matrix(unlist(l), ncol = 2 * length(l))), ncol = 1)
+     colnames(l) <- parameter[1]
+  }
 
-  if(unlist) matrix(rowMeans(matrix(unlist(l), ncol = 2 * length(l))), ncol = ncol)
-
+# Return ------------------------------------------------------------------
+  return(l)
 }
 
