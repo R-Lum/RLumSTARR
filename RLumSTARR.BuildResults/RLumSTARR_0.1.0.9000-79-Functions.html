@@ -1,6 +1,6 @@
 
 <p class='character'><h2 align="center">Major functions in the R package 'Luminescence'</h2>
-           <h4 align="center"> [version: 0.1.0.9000-58 ]</h4>
+           <h4 align="center"> [version: 0.1.0.9000-79 ]</h4>
            <style type="text/css">
            <!--
 
@@ -58,9 +58,9 @@
 </td>
 <td class=cellinside>create_RFCurveArray
 </td>
-<td class=cellinside>Create Multidimensional Curve Arrays from File input
+<td class=cellinside>Create Multidimensional Curve Arrays from RF File input
 </td>
-<td class=cellinside>Helper function to create a multidimensional curve array to prepare the Bayesian process
+<td class=cellinside>Helper function to create a multidimensional curve array based on RF-file input imported using the function  Luminescence::read_RF2R()  to prepare the Bayesian modelling process
 </td>
 <td class=cellinside>0.1.0
 
@@ -71,7 +71,7 @@
 </td>
 <td class=cellinside>Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom)<br /> , RLum Developer Team
 </td>
-<td class=cellinside>Kreutzer, S., 2021. create_RFCurveArray(): Create Multidimensional Curve Arrays from File input. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-58. 
+<td class=cellinside>Kreutzer, S., 2021. create_RFCurveArray(): Create Multidimensional Curve Arrays from RF File input. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-79. 
 
 </td></tr>
  
@@ -82,7 +82,7 @@
 </td>
 <td class=cellinside>Extract True Light from the Camera Measurements using a Bayesian<br /> Approach
 </td>
-<td class=cellinside>A Bayesian modelling approach to extract the true light using the expanding region-of-interest (ROI) approach proposed by Cunningham and Clark-Balzan (2017). The function will return the results for a single curve.
+<td class=cellinside>A Bayesian modelling approach to extract the true light using the expanding region-of-interest (ROI) approach proposed by Cunningham and Clark-Balzan (2017). The function will return the results for a  single  curve from a  single  ROI
 </td>
 <td class=cellinside>0.1.0
 
@@ -93,7 +93,7 @@
 </td>
 <td class=cellinside>Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom)<br /> , RLum Developer Team
 </td>
-<td class=cellinside>Kreutzer, S., 2021. extract_TRUELight(): Extract True Light from the Camera Measurements using a Bayesian Approach. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-58. 
+<td class=cellinside>Kreutzer, S., 2021. extract_TRUELight(): Extract True Light from the Camera Measurements using a Bayesian Approach. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-79. 
 
 </td></tr>
  
@@ -115,7 +115,7 @@
 </td>
 <td class=cellinside>Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom)<br /> , RLum Developer Team
 </td>
-<td class=cellinside>Kreutzer, S., 2021. get_MCMCParameter(): Extracts a parameter from an MCMC list. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-58. 
+<td class=cellinside>Kreutzer, S., 2021. get_MCMCParameter(): Extracts a parameter from an MCMC list. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-79. 
 
 </td></tr>
  
@@ -137,7 +137,29 @@
 </td>
 <td class=cellinside>Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom)<br /> , RLum Developer Team
 </td>
-<td class=cellinside>Kreutzer, S., 2021. run_ImageJ(): Run ImageJ SR-RF macro. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-58. 
+<td class=cellinside>Kreutzer, S., 2021. run_ImageJ(): Run ImageJ SR-RF macro. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-79. 
+
+</td></tr>
+ 
+<tr> 
+<td class=firstcolumn>5
+</td>
+<td class=cellinside>run_TRUELightExtraction
+</td>
+<td class=cellinside>Run Automated TRUE-Light Extraction
+</td>
+<td class=cellinside>Runs [extract_TRUELight] automatically in a parallel processing mode using [parallel::mclapply].
+</td>
+<td class=cellinside>0.1.0
+
+</td>
+<td class=cellinside> 
+</td>
+<td class=cellinside> 
+</td>
+<td class=cellinside>Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom)<br /> , RLum Developer Team
+</td>
+<td class=cellinside>Kreutzer, S., 2021. run_TRUELightExtraction(): Run Automated TRUE-Light Extraction. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-79. 
 
 </td></tr>
  
@@ -147,7 +169,7 @@
  <br>
 
 <p class='character'><h2 align="center">Major functions in the R package 'Luminescence'</h2>
-           <h4 align="center"> [version: 0.1.0.9000-58 ]</h4>
+           <h4 align="center"> [version: 0.1.0.9000-79 ]</h4>
            <style type="text/css">
            <!--
 
@@ -205,9 +227,9 @@
 </td>
 <td class=cellinside>create_RFCurveArray
 </td>
-<td class=cellinside>Create Multidimensional Curve Arrays from File input
+<td class=cellinside>Create Multidimensional Curve Arrays from RF File input
 </td>
-<td class=cellinside>Helper function to create a multidimensional curve array to prepare the Bayesian process
+<td class=cellinside>Helper function to create a multidimensional curve array based on RF-file input imported using the function  Luminescence::read_RF2R()  to prepare the Bayesian modelling process
 </td>
 <td class=cellinside>0.1.0
 
@@ -218,7 +240,7 @@
 </td>
 <td class=cellinside>Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom)<br /> , RLum Developer Team
 </td>
-<td class=cellinside>Kreutzer, S., 2021. create_RFCurveArray(): Create Multidimensional Curve Arrays from File input. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-58. 
+<td class=cellinside>Kreutzer, S., 2021. create_RFCurveArray(): Create Multidimensional Curve Arrays from RF File input. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-79. 
 
 </td></tr>
  
@@ -229,7 +251,7 @@
 </td>
 <td class=cellinside>Extract True Light from the Camera Measurements using a Bayesian<br /> Approach
 </td>
-<td class=cellinside>A Bayesian modelling approach to extract the true light using the expanding region-of-interest (ROI) approach proposed by Cunningham and Clark-Balzan (2017). The function will return the results for a single curve.
+<td class=cellinside>A Bayesian modelling approach to extract the true light using the expanding region-of-interest (ROI) approach proposed by Cunningham and Clark-Balzan (2017). The function will return the results for a  single  curve from a  single  ROI
 </td>
 <td class=cellinside>0.1.0
 
@@ -240,7 +262,7 @@
 </td>
 <td class=cellinside>Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom)<br /> , RLum Developer Team
 </td>
-<td class=cellinside>Kreutzer, S., 2021. extract_TRUELight(): Extract True Light from the Camera Measurements using a Bayesian Approach. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-58. 
+<td class=cellinside>Kreutzer, S., 2021. extract_TRUELight(): Extract True Light from the Camera Measurements using a Bayesian Approach. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-79. 
 
 </td></tr>
  
@@ -262,7 +284,7 @@
 </td>
 <td class=cellinside>Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom)<br /> , RLum Developer Team
 </td>
-<td class=cellinside>Kreutzer, S., 2021. get_MCMCParameter(): Extracts a parameter from an MCMC list. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-58. 
+<td class=cellinside>Kreutzer, S., 2021. get_MCMCParameter(): Extracts a parameter from an MCMC list. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-79. 
 
 </td></tr>
  
@@ -284,7 +306,29 @@
 </td>
 <td class=cellinside>Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom)<br /> , RLum Developer Team
 </td>
-<td class=cellinside>Kreutzer, S., 2021. run_ImageJ(): Run ImageJ SR-RF macro. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-58. 
+<td class=cellinside>Kreutzer, S., 2021. run_ImageJ(): Run ImageJ SR-RF macro. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-79. 
+
+</td></tr>
+ 
+<tr> 
+<td class=firstcolumn>5
+</td>
+<td class=cellinside>run_TRUELightExtraction
+</td>
+<td class=cellinside>Run Automated TRUE-Light Extraction
+</td>
+<td class=cellinside>Runs [extract_TRUELight] automatically in a parallel processing mode using [parallel::mclapply].
+</td>
+<td class=cellinside>0.1.0
+
+</td>
+<td class=cellinside> 
+</td>
+<td class=cellinside> 
+</td>
+<td class=cellinside>Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom)<br /> , RLum Developer Team
+</td>
+<td class=cellinside>Kreutzer, S., 2021. run_TRUELightExtraction(): Run Automated TRUE-Light Extraction. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-79. 
 
 </td></tr>
  

@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_RFCurveArray.R
 \name{create_RFCurveArray}
 \alias{create_RFCurveArray}
-\title{Create Multidimensional Curve Arrays from File input}
+\title{Create Multidimensional Curve Arrays from RF File input}
 \usage{
 create_RFCurveArray(files)
 }
@@ -10,11 +10,13 @@ create_RFCurveArray(files)
 \item{files}{\link{list} (\strong{required}): list of \code{.rf} files to be imported}
 }
 \value{
-Returns a list with two arrays for the \code{RF_nat} and the \code{RF_reg} curve
+Returns a list of class \code{RLumSTARR.RFCurveArrary} with two arrays for the \code{RF_nat}
+and the \code{RF_reg} curve
 }
 \description{
-Helper function to create a multidimensional curve array to
-prepare the Bayesian process
+Helper function to create a multidimensional curve array based on
+RF-file input imported using the function \code{Luminescence::read_RF2R()} to
+prepare the Bayesian modelling process
 }
 \section{Function version}{
  0.1.0
@@ -22,14 +24,21 @@ prepare the Bayesian process
 
 \examples{
 
-##TODO
+## list files using package external data
+files <- list.files(system.file("extdata", "", package="RLumSTARR"), full.names=TRUE)
 
+## create curve array
+create_RFCurveArray(files = files)
+
+}
+\seealso{
+\link[Luminescence:read_RF2R]{Luminescence::read_RF2R}
 }
 \author{
 Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom)
 , RLum Developer Team} 
 
 \section{How to cite}{
-Kreutzer, S., 2021. create_RFCurveArray(): Create Multidimensional Curve Arrays from File input. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-58. 
+Kreutzer, S., 2021. create_RFCurveArray(): Create Multidimensional Curve Arrays from RF File input. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-79. 
 }
 

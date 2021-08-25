@@ -7,14 +7,17 @@
 get_MCMCParameter(mcmc, parameter, prob = 0.95, unlist = TRUE)
 }
 \arguments{
-\item{mcmc}{\link[coda:mcmc]{coda::mcmc} or \link[coda:mcmc.list]{coda::mcmc.list} (\strong{required}) input}
+\item{mcmc}{\link[coda:mcmc]{coda::mcmc} or \link[coda:mcmc.list]{coda::mcmc.list} (\strong{required}): input object,
+if created by \link{extract_TRUELight} the correct object is extracted automatically}
 
 \item{parameter}{\link{character} (\strong{required}): name of the parameter to be extracted}
 
-\item{prob}{\link{numeric} (\emph{with default}): probability for the HPD calculation}
+\item{prob}{\link{numeric} (\emph{with default}): probability for the HPD calculation (cf. \link[coda:HPDinterval]{coda::HPDinterval})}
 
-\item{unlist}{\link{logical} (\emph{with default}): if \code{TRUE} the output is a \link{matrix}
-otherwise a \link{list}}
+\item{unlist}{\link{logical} (\emph{with default}): if \code{TRUE} the output is a \link{matrix} of the means
+of the lower and upper intervals of the parameter. If the parameter was estimated based on
+multiple chains, this chains are also subject to an average calculation. If \code{FALSE} the output is a
+\link{list} as returned by \link[coda:HPDinterval]{coda::HPDinterval}}
 }
 \value{
 Returns a matrix with the parameter value or a \link{list}
@@ -40,6 +43,6 @@ Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United K
 , RLum Developer Team} 
 
 \section{How to cite}{
-Kreutzer, S., 2021. get_MCMCParameter(): Extracts a parameter from an MCMC list. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-58. 
+Kreutzer, S., 2021. get_MCMCParameter(): Extracts a parameter from an MCMC list. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-79. 
 }
 

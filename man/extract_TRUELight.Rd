@@ -5,26 +5,66 @@
 \title{Extract True Light from the Camera Measurements using a Bayesian
 Approach}
 \usage{
-extract_TRUELight(data, ROI = 1, method_control = list())
+extract_TRUELight(
+  data,
+  element = c("RF_nat", "RF_reg"),
+  ROI = 2,
+  stepping = 1,
+  method_control = list(),
+  verbose = TRUE
+)
 }
 \arguments{
-\item{data}{\link{array} (\strong{required}): curve array created by \link{create_RFCurveArray}}
+\item{data}{\link{array} (\strong{required}): object created by \link{create_RFCurveArray}}
 
-\item{ROI}{\link{numeric} (\emph{with default}): ROI to be analysed}
+\item{element}{\link{character} (\emph{with default}): element from the input to be analysed,
+'supported are only \code{RF_nat} or \code{RF_reg}}
+
+\item{ROI}{\link{numeric} (\emph{optional}): ROI to be analysed, if nothing is given
+all ROIs are analysed, however, the first ROIS is discarded!}
+
+\item{stepping}{\link{numeric} (\emph{with default}): stepping paramter that allows
+you to model only every xth (the value in \code{stepping}). This option can be extremly
+useful to play with data because it dramatically improves the modelling speed because
+less data are considered.}
 
 \item{method_control}{\link{list} (\emph{optional}): parameter to be passed to \code{rjags}.
-Supported are \code{n.chain}, \code{n.iter}, \code{thin}, \code{variable.names}, \code{model}}
+Supported are \code{n.chain}, \code{n.iter}, \code{thin}, \code{variable.names}, \code{model}, see details for more.}
+
+\item{verbose}{\link{logical} (\emph{with default}): enable/disable terminal feedback}
 }
 \value{
-Returns a list with an \link[Luminescence:RLum.Data.Curve-class]{Luminescence::RLum.Data.Curve} object
-(the RF curve with the true light) and the \link[rjags:coda.samples]{rjags::coda.samples} output for
-further processing. \emph{Note: Regardless the observed variable, the parameter alpha
-will be always be used to create the curve}
+Returns a list with an the following elements:
+
+\code{...$RF_curve}: \link[Luminescence:RLum.Data.Curve-class]{Luminescence::RLum.Data.Curve} object
+(the RF curve with the true light)
+
+\code{...$rjags_output}: \link[rjags:coda.samples]{rjags::coda.samples} output for further processing.
+\emph{Note: Regardless the observed variable, the parameter alpha
+will always be used to create the curve}
+
+\code{...$model}: the model used to run the Bayesian process, use \link{writeLines} to have
+nicely formatted terminal output
 }
 \description{
 A Bayesian modelling approach to extract the true light using the
 expanding region-of-interest (ROI) approach proposed by Cunningham and Clark-Balzan (2017).
-The function will return the results for a single curve.
+The function will return the results for a \strong{single} curve from a \strong{single} ROI
+}
+\details{
+\strong{Method control}
+
+Supported options to be passed via the parameter \code{method_control}, most
+of them are used internally for the calls to \link[rjags:jags.model]{rjags::jags.model} and \link[rjags:coda.samples]{rjags::coda.samples}.
+
+\tabular{lll}{
+\strong{PARAMETER} \tab \strong{TYPE} \tab \strong{DESCRIPTION}\cr
+\code{n.chain} \tab \link{numeric} \tab the number of MCMC chains \cr
+\code{n.iter} \tab \link{numeric} \tab number of iterations for the MC runs \cr
+\code{thin} \tab \link{numeric} \tab thinning interval used for the monitoring \cr
+\code{variable.names} \tab \link{character} \tab variable names to monitor, \code{alpha} is always monitored \cr
+\code{model} \tab \link{character} \tab the bugs model
+}
 }
 \section{Function version}{
  0.1.0
@@ -32,18 +72,34 @@ The function will return the results for a single curve.
 
 \examples{
 
-##TODO
+## list files using package external data
+files <- list.files(system.file("extdata", "", package="RLumSTARR"), full.names=TRUE)
+
+## create curve array
+dat <- create_RFCurveArray(files = files)
+output <-
+extract_TRUELight(
+ data = dat,
+ ROI = c(4),
+ verbose = FALSE,
+ method_control = list(
+   n.chain = 1,
+   n.iter = 50,
+   thin = 20))
 
 } 
 
 \section{How to cite}{
-Kreutzer, S., 2021. extract_TRUELight(): Extract True Light from the Camera Measurements using a Bayesian Approach. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-58. 
+Kreutzer, S., 2021. extract_TRUELight(): Extract True Light from the Camera Measurements using a Bayesian Approach. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-79. 
 }
 
 \references{
 Cunningham, A.C., Clark-Balzan, L., 2017. Overcoming crosstalk in
 luminescence images of mineral grains. Radiation Measurements 106, 498–505.
 doi:10.1016/j.radmeas.2017.06.004
+}
+\seealso{
+\link{create_RFCurveArray}, \link{get_MCMCParameter}
 }
 \author{
 Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom)
