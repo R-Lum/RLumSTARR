@@ -61,7 +61,7 @@ model_default <- "model {
          omega.star[i,j] ~ dlnorm(0,1)
 
          ## error component ... it looks like a normal distribution
-         epsilon[i, j] ~ dnorm(600,1)
+         epsilon[i, j] ~ dnorm(600,1E-01)
 
      }
      ## apply ordering constraints
