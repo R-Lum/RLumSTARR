@@ -8,6 +8,9 @@
 #'@param ROI [numeric] (*optional*): ROIs to be analysed, if nothing is given
 #'all ROIs are analysed, however, the first ROIS is discarded!
 #'
+#'@param stepping [numeric] (*with default*): the stepping parameter from and to
+#'be passed to [extract_TRUELight]
+#'
 #'@param mc.cores [numeric] (*with default*): number of cores used for the processing,
 #'passed to [parallel::mclapply]
 #'
@@ -52,6 +55,7 @@
 run_TRUELightExtraction <- function(
   data,
   ROI,
+  stepping = 1,
   mc.cores = max(c(1, parallel::detectCores() - 2)),
   method_control = list(),
   include_jags_output = FALSE,
@@ -76,7 +80,7 @@ run_TRUELightExtraction <- function(
     cli::cli_alert_info("Entering number-crunching ... ")
   }
 
-  .fun <- function(x, method_control, include_jags_output) {
+  .fun <- function(x, stepping, method_control, include_jags_output) {
     records <- list()
     for(i in c("RF_nat", "RF_reg")){
       system(paste("echo '--[+] running extraction ",i," ROI: ", x, "'"))
@@ -84,6 +88,7 @@ run_TRUELightExtraction <- function(
         data,
         element = i,
         ROI = x,
+        stepping = stepping[1],
         verbose = FALSE,
         method_control = method_control)
     }
@@ -114,6 +119,7 @@ run_TRUELightExtraction <- function(
       FUN = .fun,
       method_control = method_control,
       mc.cores = mc.cores,
+      steppinng = stepping[1],
       include_jags_output = include_jags_output
     )
   if(verbose) cli::cat_rule("DONE")
