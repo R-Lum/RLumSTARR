@@ -1,0 +1,68 @@
+---
+title: "A brief introduction into light extraction using Bayesian methods as implemented in RLumSTARR"
+author: "Sebastian Kreutzer"
+date: "version: `r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{A brief introduction into light extraction using Bayesian methods as implemented in RLumSTARR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.align = "center"
+)
+library(RLumSTARR)
+```
+
+# Introduction
+
+All examples shown below use a dataset shipped with package
+
+# Bayesian analysis
+
+## Import example files
+
+```{r}
+files <- list.files(system.file("extdata", "", package="RLumSTARR"), full.names=TRUE)
+```
+
+## Prepare data for the modelling
+
+```{r, fig.width = 8}
+## create curve array 
+dat <- create_RFCurveArray(files = files)
+plot(dat)
+```
+
+## Run the modelling
+
+```{r}
+##run modelling for one ROI
+output <- extract_TRUELight(
+ data = dat,
+ ROI = c(5),
+ stepping = 80,
+ verbose = FALSE,
+ method_control = list(
+   n.chain = 3,
+   n.iter = 50000,
+   variable.names = c("mu", "phi", "omega", "epsilon"),
+   thin = 20))
+```
+
+## Bayesian diagonistics
+
+### Numerical summary
+```{r}
+summary(output$jags_output)
+```
+
+### Diagonistic plots
+
+```{r, fig.width = 6, fig.height = 10}
+plot(output$jags_output)
+```
