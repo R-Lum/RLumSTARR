@@ -1,7 +1,9 @@
-#'@title Run Automated TRUE-Light Extraction
+#'@title Run Automated TRUE-Light Extraction over multiple datasets
 #'
 #'@description Runs [extract_TRUELight] automatically in a parallel processing
-#'mode using [parallel::mclapply].
+#'mode using [parallel::mclapply]. In essence, the function calls [extract_TRUELight]
+#'and extracts the RF curves from the results and constructs an [Luminescence::RLum.Analysis-class]
+#'for further analyses.
 #'
 #'@param data [array] (**required**): object created by [create_RFCurveArray]
 #'
