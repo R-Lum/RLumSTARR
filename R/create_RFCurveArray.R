@@ -6,7 +6,7 @@
 #'
 #'@param files [list] (**required**): list of `.rf` files to be imported
 #'
-#'@return Returns a list of class `RLumSTARR.RFCurveArrary` with two arrays for the `RF_nat`
+#'@return Returns a list of class `RLumSTARR_RFCurveArrary` with two arrays for the `RF_nat`
 #'and the `RF_reg` curve
 #'
 #'@section Function version: 0.1.0
@@ -75,7 +75,7 @@ dimnames(RF_reg) <- list(RF_reg_time, paste0("ROI_",rownames(ROI_AREA)), dim_nam
 
 ## generate output and set class
 output <- list(RF_nat = RF_nat, RF_reg = RF_reg)
-attr(output, "class") <- "RLumSTARR.RFCurveArray"
+attr(output, "class") <- "RLumSTARR_RFCurveArray"
 attr(output, "array_dim_names") <- c(rows = "time", cols = "ROI ID", slices = "ROI area")
 
 return(output)

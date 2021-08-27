@@ -91,7 +91,7 @@ extract_TRUELight <- function(
 ) {
 
 # Input check -------------------------------------------------------------
-if(attr(data, "class") != "RLumSTARR.RFCurveArray")
+if(attr(data, "class") != "RLumSTARR_RFCurveArray")
   stop("[extract_TRUELight()] input must be of type RLumSTARR.RFCurveArray!", call. = FALSE)
 
 if(!any(element[1] %in% names(data)))

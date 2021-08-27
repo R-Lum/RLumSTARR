@@ -26,6 +26,7 @@
 #'
 #'@import methods
 #'@importFrom utils modifyList
+#'@importFrom graphics mtext par
 #'
 #'@md
 NULL
