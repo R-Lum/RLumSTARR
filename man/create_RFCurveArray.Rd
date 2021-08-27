@@ -10,7 +10,7 @@ create_RFCurveArray(files)
 \item{files}{\link{list} (\strong{required}): list of \code{.rf} files to be imported}
 }
 \value{
-Returns a list of class \code{RLumSTARR.RFCurveArrary} with two arrays for the \code{RF_nat}
+Returns a list of class \code{RLumSTARR_RFCurveArrary} with two arrays for the \code{RF_nat}
 and the \code{RF_reg} curve
 }
 \description{
@@ -39,6 +39,6 @@ Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United K
 , RLum Developer Team} 
 
 \section{How to cite}{
-Kreutzer, S., 2021. create_RFCurveArray(): Create Multidimensional Curve Arrays from RF File input. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-85. 
+Kreutzer, S., 2021. create_RFCurveArray(): Create Multidimensional Curve Arrays from RF File input. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-101. 
 }
 

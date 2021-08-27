@@ -2,7 +2,7 @@
 % Please edit documentation in R/run_TRUELightExtraction.R
 \name{run_TRUELightExtraction}
 \alias{run_TRUELightExtraction}
-\title{Run Automated TRUE-Light Extraction}
+\title{Run Automated TRUE-Light Extraction over multiple datasets}
 \usage{
 run_TRUELightExtraction(
   data,
@@ -44,7 +44,9 @@ with two [Luminescence::RLum.Data.Curve-class] objects for `RF_nat` and `RF_reg`
 }
 \description{
 Runs [extract_TRUELight] automatically in a parallel processing
-mode using [parallel::mclapply].
+mode using [parallel::mclapply]. In essence, the function calls [extract_TRUELight]
+and extracts the RF curves from the results and constructs an [Luminescence::RLum.Analysis-class]
+for further analyses.
 }
 \section{Function version}{
  0.1.0
@@ -52,13 +54,13 @@ mode using [parallel::mclapply].
 
 \examples{
 
-\dontrun{
 ## list files using package external data
 files <- list.files(system.file("extdata", "", package="RLumSTARR"), full.names=TRUE)
 ## create curve array
 dat <- create_RFCurveArray(files = files)
 output <- run_TRUELightExtraction(
 data = dat,
+stepping = 15,
 mc.cores = 1,
 ROI = 5,
 verbose = TRUE,
@@ -66,7 +68,6 @@ method_control = list(
  n.chain = 1,
  n.iter = 50,
  thin = 20))
-}
 
 }
 \author{
@@ -74,6 +75,6 @@ Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United K
 , RLum Developer Team} 
 
 \section{How to cite}{
-Kreutzer, S., 2021. run_TRUELightExtraction(): Run Automated TRUE-Light Extraction. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-85. 
+Kreutzer, S., 2021. run_TRUELightExtraction(): Run Automated TRUE-Light Extraction over multiple datasets. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-101. 
 }
 
