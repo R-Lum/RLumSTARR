@@ -54,14 +54,19 @@ output <- extract_TRUELight(
    thin = 20))
 ```
 
-## Bayesian diagonistics
+## Bayesian diagnostics
+
+Bayesian diagnostics is important to check whether the parameters have 
+converged. `'RLumSTARR'` returns the `mcmc.list` returned by `'rjags'`. 
+In combination with the package `'coda'` (which is loaded once `'RLumSTARR'` is loaded). 
+This can be used to get the hands on the data.
 
 ### Numerical summary
 ```{r}
 summary(output$jags_output)
 ```
 
-### Diagonistic plots
+### Diagnostic plots
 
 ```{r, fig.width = 6, fig.height = 10}
 plot(output$jags_output)
