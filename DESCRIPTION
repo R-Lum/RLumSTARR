@@ -1,15 +1,15 @@
 Package: RLumSTARR
 Type: Package
 Title: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE)
-Version: 0.1.0.9000-85
+Version: 0.1.0.9000-86
 Author: Sebastian Kreutzer [aut, cre] (<https://orcid.org/0000-0002-0734-2199>),
     Dirk Mittelstrass [aut] (<https://orcid.org/0000-0002-9567-8791>)
 Authors@R: c(
     person("Sebastian", "Kreutzer", role = c("aut", "cre"), email = "sebastian.kreutzer@aber.ac.uk", comment = c(ORCID = "0000-0002-0734-2199")),
     person("Dirk", "Mittelstrass", role = c("aut"), comment = c(ORCID = "0000-0002-9567-8791")))
 Maintainer: Sebastian Kreutzer <sebastian.kreutzer@aber.ac.uk>
-Description: Analysing spatially resolved radiofluorescence data using ImageJ. A collection 
-    of functions to support early work on the subject.
+Description: Analysing spatially resolved radiofluorescence data using ImageJ in combination with Bayesian number-crunching.
+  A collection of functions to support early work on the subject.
 License: GPL-3
 Depends:
     R (>= 4.0),
