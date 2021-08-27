@@ -37,13 +37,13 @@
 #'
 #'@examples
 #'
-#'\dontrun{
 #'## list files using package external data
 #'files <- list.files(system.file("extdata", "", package="RLumSTARR"), full.names=TRUE)
 #'## create curve array
 #'dat <- create_RFCurveArray(files = files)
 #'output <- run_TRUELightExtraction(
 #' data = dat,
+#' stepping = 15,
 #' mc.cores = 1,
 #' ROI = 5,
 #' verbose = TRUE,
@@ -51,7 +51,6 @@
 #'  n.chain = 1,
 #'  n.iter = 50,
 #'  thin = 20))
-#'}
 #'
 #'@export
 run_TRUELightExtraction <- function(
@@ -64,8 +63,11 @@ run_TRUELightExtraction <- function(
   verbose = TRUE
 ) {
 
-  ##set ROI
+  ##set ROI ... remove first
   if(is.null(ROI)) ROI <- 2:dim(data[[1]])[2]
+
+  ## set ROI names
+  ROI_names <- colnames(data[[1]])
 
   if(verbose) {
     cat("\n[run_TRULightExtraction()]\n\n")
@@ -95,21 +97,26 @@ run_TRUELightExtraction <- function(
         method_control = method_control)
     }
 
-    system(paste("echo '--[X] <combining RF_nat and RF_reg ROI: ",x, ">'"))
+    system(paste0("echo '--\033[32m[\xE2\x9C\x94]\033[39m <combining RF_nat and RF_reg ROI: ",x, "> (", ROI_names[x],")'"))
 
     ## set info object
+    info <- list(ROI = ROI_names[x])
     if(include_jags_output){
-      info <- list(
+      info <- c(info, list(
          jags_output = list(
           RF_nat = records$RF_nat$jags_output,
           RF_reg = records$RF_reg$jags_output
-        ))
-    }else{
-      info <- list()
+        )))
     }
 
     ## create output object
-    Luminescence::set_RLum("RLum.Analysis", records = list(records$RF_nat$RF_curve, records$RF_reg$RF_curve), info = info)
+    Luminescence::set_RLum(
+      "RLum.Analysis",
+      originator = "run_TRUELightExtraction",
+      protocol = "Bayesian analysis",
+      records = list(records$RF_nat$RF_curve, records$RF_reg$RF_curve),
+      info = info
+    )
 
   }
 
@@ -128,5 +135,8 @@ run_TRUELightExtraction <- function(
 
 
 # Return ------------------------------------------------------------------
+  ## assign ROI names
+  names(output) <- ROI_names[ROI]
+
   return(output)
 }
