@@ -34,21 +34,23 @@ melt_RLumSTARR <- function(x, ...) {
 
   # RLumSTARR_RFCurveArray -------------------
   if(attr(x, "class") == "RLumSTARR_RFCurveArray") {
-    df <- data.table::rbindlist(lapply(names(x), function(x){
+    df <- data.table::rbindlist(lapply(names(x), function(y){
         ## get dim names
-        dim_names <- dimnames(x)
+        dim_names <- dimnames(x[[y]])
         x_len <- length(dim_names[[1]])
         y_len <- length(dim_names[[2]])
         z_len <- length(dim_names[[3]])
 
+
         ## extract columns
         data.frame(
+          SIGNAL = y,
           CHANNEL_ID = rep(rep(1:x_len, y_len), z_len),
           TIME = as.numeric(rep(rep(dim_names[[1]], y_len), z_len)),
-          ROI_ID = rep(dim_names[[2]], each = x_len * z_len),
+          ROI_ID = rep(rep(dim_names[[2]], each = x_len), z_len),
           ROI_AREA = as.numeric(rep(unlist(
             strsplit(dim_names[[3]], ", ", fixed = TRUE)), each = x_len)),
-          VALUE = as.numeric(x)
+          VALUE = as.numeric(x[[y]])
         )
     }))
   }
