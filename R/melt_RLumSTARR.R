@@ -64,7 +64,7 @@ melt_RLumSTARR <- function(x, ...) {
       data.frame(
         TIME = TIME,
         PARAMETER = x,
-        CATEGORY = 1:ncol(l[[x]]),
+        CATEGORY = as.factor(rep(1:ncol(l[[x]]), each = length(TIME))),
         VALUE = as.numeric(l[[x]])
       )
     }))
