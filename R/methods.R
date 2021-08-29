@@ -13,9 +13,7 @@
 #'@name methods_RLumSTARR
 NULL
 
-####################################################################################################
-# methods for generic: plot()
-# ##################################################################################################
+# plot -------------
 #'@rdname methods_RLumSTARR
 #'@method plot RLumSTARR_RFCurveArray
 #'@export
@@ -44,4 +42,13 @@ plot.RLumSTARR_RFCurveArray <- function(x, y = NULL, ...) {
       mtext(side = 3, paste("ROI area(s): ", paste(unique(zlab), collapse = ",")), cex = 0.7)
     }
   }
+}
+
+# print RLUMSTARR_model -------------
+#'@rdname methods_RLumSTARR
+#'@method print RLumSTARR_model
+#'@export
+print.RLumSTARR_model <- function(x, ...) {
+  writeLines(x)
+
 }
