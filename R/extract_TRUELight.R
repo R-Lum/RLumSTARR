@@ -39,7 +39,7 @@
 #'
 #'@param verbose [logical] (*with default*): enable/disable terminal feedback
 #'
-#'@return Returns a list with an the following elements:
+#'@return Returns a list of class `RLumSTARR_TRUELight` with an the following elements:
 #'
 #' `...$RF_curve`: [Luminescence::RLum.Data.Curve-class] object
 #'(the RF curve with the true light)
@@ -92,7 +92,7 @@ extract_TRUELight <- function(
 
 # Input check -------------------------------------------------------------
 if(attr(data, "class") != "RLumSTARR_RFCurveArray")
-  stop("[extract_TRUELight()] input must be of type RLumSTARR.RFCurveArray!", call. = FALSE)
+  stop("[extract_TRUELight()] input must be of type RLumSTARR_RFCurveArray!", call. = FALSE)
 
 if(!any(element[1] %in% names(data)))
   stop("[extract_TRUELight()] element invalid", call. = FALSE)
@@ -190,7 +190,7 @@ curve <- Luminescence::set_RLum(
   data = cbind(as.numeric(rownames(Y)), alpha))
 
 output <- list(RF_curve = curve, jags_output = jags_output, model = method_control$model[1])
-attr(output, "class") <- "RLumSTARR.TRUELight"
+attr(output, "class") <- "RLumSTARR_TRUELight"
 
 return(output)
 }
