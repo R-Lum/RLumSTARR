@@ -3,9 +3,12 @@
 \name{methods_RLumSTARR}
 \alias{methods_RLumSTARR}
 \alias{plot.RLumSTARR_RFCurveArray}
+\alias{print.RLumSTARR_model}
 \title{methods_RLumSTARR}
 \usage{
 \method{plot}{RLumSTARR_RFCurveArray}(x, y = NULL, ...)
+
+\method{print}{RLumSTARR_model}(x, ...)
 }
 \arguments{
 \item{x:}{input object}
@@ -20,7 +23,7 @@ Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United K
 , RLum Developer Team} 
 
 \section{How to cite}{
-Kreutzer, S., 2021. methods_RLumSTARR(): methods_RLumSTARR. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-102. 
+Kreutzer, S., 2021. methods_RLumSTARR(): methods_RLumSTARR. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-108. 
 }
 
 \keyword{internal}

@@ -34,7 +34,7 @@ Supported are \code{n.chain}, \code{n.iter}, \code{thin}, \code{variable.names},
 \item{verbose}{\link{logical} (\emph{with default}): enable/disable terminal feedback}
 }
 \value{
-Returns a list with an the following elements:
+Returns a list of class \code{RLumSTARR_TRUELight} with an the following elements:
 
 \code{...$RF_curve}: \link[Luminescence:RLum.Data.Curve-class]{Luminescence::RLum.Data.Curve} object
 (the RF curve with the true light)
@@ -77,8 +77,7 @@ files <- list.files(system.file("extdata", "", package="RLumSTARR"), full.names=
 
 ## create curve array
 dat <- create_RFCurveArray(files = files)
-output <-
-extract_TRUELight(
+output <- extract_TRUELight(
  data = dat,
  ROI = c(4),
  stepping = 10,
@@ -91,7 +90,7 @@ extract_TRUELight(
 } 
 
 \section{How to cite}{
-Kreutzer, S., 2021. extract_TRUELight(): Extract True Light from the Camera Measurements using a Bayesian Approach. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-102. 
+Kreutzer, S., 2021. extract_TRUELight(): Extract True Light from the Camera Measurements using a Bayesian Approach. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-108. 
 }
 
 \references{
@@ -100,7 +99,7 @@ luminescence images of mineral grains. Radiation Measurements 106, 498–505.
 doi:10.1016/j.radmeas.2017.06.004
 }
 \seealso{
-\link{create_RFCurveArray}, \link{get_MCMCParameter}
+\link{create_RFCurveArray}, \link{get_MCMCParameters}
 }
 \author{
 Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom)
