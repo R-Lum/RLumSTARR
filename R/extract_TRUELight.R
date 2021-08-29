@@ -190,6 +190,7 @@ curve <- Luminescence::set_RLum(
 
 output <- list(RF_curve = curve, jags_output = jags_output, model = method_control$model[1])
 attr(output, "class") <- "RLumSTARR_TRUELight"
+attr(output$model, "class") <- "RLumSTARR_model"
 
 return(output)
 }
