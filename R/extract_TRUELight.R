@@ -62,8 +62,7 @@
 #'
 #'## create curve array
 #'dat <- create_RFCurveArray(files = files)
-#'output <-
-#'extract_TRUELight(
+#'output <- extract_TRUELight(
 #'  data = dat,
 #'  ROI = c(4),
 #'  stepping = 10,
@@ -77,7 +76,7 @@
 #'luminescence images of mineral grains. Radiation Measurements 106, 498–505.
 #'doi:10.1016/j.radmeas.2017.06.004
 #'
-#'@seealso [create_RFCurveArray], [get_MCMCParameter]
+#'@seealso [create_RFCurveArray], [get_MCMCParameters]
 #'
 #'@md
 #'@export
@@ -180,7 +179,7 @@ jags_output <-
 
 ## extract only alpha values, this way we can observe more variables
 ## without trashing the curve
-alpha <- get_MCMCParameter(jags_output, "alpha")
+alpha <- get_MCMCParameters(jags_output, "alpha")
 
 ## set new RLum object
 curve <- Luminescence::set_RLum(
