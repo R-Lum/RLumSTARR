@@ -52,6 +52,7 @@
 #'  n.iter = 50,
 #'  thin = 20))
 #'
+#'@md
 #'@export
 run_TRUELightExtraction <- function(
   data,
