@@ -1,7 +1,7 @@
 Package: RLumSTARR
 Type: Package
 Title: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE)
-Version: 0.1.0.9000-113
+Version: 0.1.0.9000-117
 Author: Sebastian Kreutzer [aut, cre] (<https://orcid.org/0000-0002-0734-2199>),
     Dirk Mittelstrass [aut] (<https://orcid.org/0000-0002-9567-8791>)
 Authors@R: c(
@@ -15,19 +15,20 @@ Depends:
     R (>= 4.0),
     utils,
 Imports: 
-    cli (>= 3.0.1),
+    cli (>= 3.2.0),
     coda (>= 0.19-1),
     data.table (>= 1.14),
-    khroma (>= 1.6), 
-    Luminescence (>= 0.9.8),
-    matrixStats (>= 0.60.1), 
+    khroma (>= 1.8.0), 
+    Luminescence (>= 0.9.19),
+    matrixStats (>= 0.61.0), 
     methods,
-    rjags (>= 4-10),
+    rjags (>= 4-12),
 Suggests: 
-    rmarkdown,
-    knitr
+    rmarkdown (>= 2.11),
+    testthat (>= 3.1.2),
+    knitr (>= 1.37)
 Encoding: UTF-8
 Language: en-GB
 LazyData: true
 VignetteBuilder: knitr
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
