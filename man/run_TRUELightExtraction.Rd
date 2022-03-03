@@ -15,37 +15,37 @@ run_TRUELightExtraction(
 )
 }
 \arguments{
-\item{data}{[array] (**required**): object created by [create_RFCurveArray]}
+\item{data}{\link{array} (\strong{required}): object created by \link{create_RFCurveArray}}
 
-\item{ROI}{[numeric] (*optional*): ROIs to be analysed, if nothing is given
+\item{ROI}{\link{numeric} (\emph{optional}): ROIs to be analysed, if nothing is given
 all ROIs are analysed, however, the first ROIS is discarded!}
 
-\item{stepping}{[numeric] (*with default*): the stepping parameter from and to
-be passed to [extract_TRUELight]}
+\item{stepping}{\link{numeric} (\emph{with default}): the stepping parameter from and to
+be passed to \link{extract_TRUELight}}
 
-\item{mc.cores}{[numeric] (*with default*): number of cores used for the processing,
-passed to [parallel::mclapply]}
+\item{mc.cores}{\link{numeric} (\emph{with default}): number of cores used for the processing,
+passed to \link[parallel:mclapply]{parallel::mclapply}}
 
-\item{method_control}{[list] (*optional*): parameters to be passed to [extract_TRUELight]}
+\item{method_control}{\link{list} (\emph{optional}): parameters to be passed to \link{extract_TRUELight}}
 
-\item{include_jags_output}{[logical] (*with default*): allows to include the output
-from JAGS as info object in the [Luminescence::RLum.Analysis-class] output objects
-for further diagnostics. Setting this option to `TRUE` is not recommended for large datasets,
+\item{include_jags_output}{\link{logical} (\emph{with default}): allows to include the output
+from JAGS as info object in the \link[Luminescence:RLum.Analysis-class]{Luminescence::RLum.Analysis} output objects
+for further diagnostics. Setting this option to \code{TRUE} is not recommended for large datasets,
 since it will tremendously inflate the size of output and consume a lot of memory.
-If in-depth diagnostics are required, the function [extract_TRUELight] is recommended
+If in-depth diagnostics are required, the function \link{extract_TRUELight} is recommended
 instead.}
 
-\item{verbose}{[logical] (*with default*): enable/disable verbose mode. The output of
-the MCMC sampling using `rjags` is **always** silent.}
+\item{verbose}{\link{logical} (\emph{with default}): enable/disable verbose mode. The output of
+the MCMC sampling using \code{rjags} is \strong{always} silent.}
 }
 \value{
-The output is a [list] containing [Luminescence::RLum.Analysis-class] objects
-with two [Luminescence::RLum.Data.Curve-class] objects for `RF_nat` and `RF_reg` respectively.
+The output is a \link{list} containing \link[Luminescence:RLum.Analysis-class]{Luminescence::RLum.Analysis} objects
+with two \link[Luminescence:RLum.Data.Curve-class]{Luminescence::RLum.Data.Curve} objects for \code{RF_nat} and \code{RF_reg} respectively.
 }
 \description{
-Runs [extract_TRUELight] automatically in a parallel processing
-mode using [parallel::mclapply]. In essence, the function calls [extract_TRUELight]
-and extracts the RF curves from the results and constructs an [Luminescence::RLum.Analysis-class]
+Runs \link{extract_TRUELight} automatically in a parallel processing
+mode using \link[parallel:mclapply]{parallel::mclapply}. In essence, the function calls \link{extract_TRUELight}
+and extracts the RF curves from the results and constructs an \link[Luminescence:RLum.Analysis-class]{Luminescence::RLum.Analysis}
 for further analyses.
 }
 \section{Function version}{
@@ -75,6 +75,6 @@ Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United K
 , RLum Developer Team} 
 
 \section{How to cite}{
-Kreutzer, S., 2021. run_TRUELightExtraction(): Run Automated TRUE-Light Extraction over multiple datasets. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-113. 
+Kreutzer, S., 2022. run_TRUELightExtraction(): Run Automated TRUE-Light Extraction over multiple datasets. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2022. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-118. 
 }
 

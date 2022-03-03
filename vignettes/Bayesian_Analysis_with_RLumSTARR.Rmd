@@ -27,7 +27,9 @@ All examples shown below use a dataset shipped with package
 ## Import example files
 
 ```{r}
-files <- list.files(system.file("extdata", "", package="RLumSTARR"), full.names=TRUE)
+files <-
+  list.files(system.file("extdata", "", package = "RLumSTARR"), full.names =
+               TRUE)
 ```
 
 ## Prepare data for the modelling

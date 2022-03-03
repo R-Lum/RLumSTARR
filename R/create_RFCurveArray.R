@@ -45,9 +45,16 @@ if(is(files, "RLum.Results") && files@originator == "extract_ROI")  {
   ## get duplicated row names, this will become the dimensions
   ROI_AREA_n <- sum(!duplicated(rownames(m)))
 
-  ## generate array set names and fill array
+  ## set and fill area
   a <- array(as.numeric(m), dim = c(nrow(m) / ROI_AREA_n, ncol(m), ROI_AREA_n))
-  dimnames(a) <- list(unique(1:nrow(a[,,1])), colnames(m), unique(ROI_AREA)[1:ROI_AREA_n])
+
+  ## set dimension names to be compatible with
+  ## the other input format
+  dimnames(a) <- list(
+    unique(1:nrow(a[,,1])),
+    colnames(m),
+    lapply(ROI_AREA[seq(1,length(ROI_AREA), ncol(m))], function(x) paste(rep(x, each = ncol(m)), collapse = ","))
+    )
 
   ## set objects ... the 2nd must be NA because there is nothing else
   RF_nat <- a
@@ -107,3 +114,4 @@ attr(output, "array_dim_names") <- c(rows = "time", cols = "ROI ID", slices = "R
 
 return(output)
 }
+

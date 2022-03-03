@@ -7,7 +7,9 @@
 create_RFCurveArray(files)
 }
 \arguments{
-\item{files}{\link{list} (\strong{required}): list of \code{.rf} files to be imported}
+\item{files}{\link{list} (\strong{required}): list of \code{.rf} files to be imported. Alternatively
+you can pass an object created by \link[Luminescence:extract_ROI]{Luminescence::extract_ROI}. In this case only the
+first list element \code{RF_nat} is filled.}
 }
 \value{
 Returns a list of class \code{RLumSTARR_RFCurveArrary} with two arrays for the \code{RF_nat}
@@ -32,13 +34,14 @@ create_RFCurveArray(files = files)
 
 }
 \seealso{
-\link[Luminescence:read_RF2R]{Luminescence::read_RF2R}
+\link[Luminescence:read_RF2R]{Luminescence::read_RF2R}, \link[Luminescence:extract_ROI]{Luminescence::extract_ROI}
 }
 \author{
 Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom)
 , RLum Developer Team} 
 
 \section{How to cite}{
-Kreutzer, S., 2021. create_RFCurveArray(): Create Multidimensional Curve Arrays from RF File input. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2021. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-113. 
+Kreutzer, S., 2022. create_RFCurveArray(): Create Multidimensional Curve Arrays from RF File input. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2022. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-118. 
 }
 
+\keyword{datagen}
