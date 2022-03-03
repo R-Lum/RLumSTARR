@@ -1,7 +1,7 @@
 Package: RLumSTARR
 Type: Package
 Title: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE)
-Version: 0.1.0.9000-118
+Version: 0.1.0.9000-120
 Author: Sebastian Kreutzer [aut, cre] (<https://orcid.org/0000-0002-0734-2199>),
     Dirk Mittelstrass [aut] (<https://orcid.org/0000-0002-9567-8791>)
 Authors@R: c(

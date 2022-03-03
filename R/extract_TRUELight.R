@@ -145,9 +145,9 @@ method_control <- modifyList(x = list(
 
 ## take input
 Y <- data[seq(1,nrow(data),stepping[1]),abs(ROI[1]),]
-
 temp_area <- unlist(strsplit(dimnames(data)[[3]], ","))
 roi_area <- as.numeric(temp_area[seq(2,length(temp_area),dim(data)[2])])
+
 colnames(Y) <- roi_area
 
 ##set model (we do this here to close the model connect)
