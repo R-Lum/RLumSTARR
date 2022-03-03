@@ -47,9 +47,9 @@ if(is(files, "RLum.Results") && files@originator == "extract_ROI")  {
 
   ## generate array set names and fill array
   a <- array(as.numeric(m), dim = c(nrow(m) / ROI_AREA_n, ncol(m), ROI_AREA_n))
-  dimnames(a) <- list(unique(1:nrow(a[,,1])), colnames(m), ROI_AREA[1:ROI_AREA_n])
+  dimnames(a) <- list(unique(1:nrow(a[,,1])), colnames(m), unique(ROI_AREA)[1:ROI_AREA_n])
 
-  ## set objects ... the 2nd must be NA
+  ## set objects ... the 2nd must be NA because there is nothing else
   RF_nat <- a
   RF_reg <- NA
 
