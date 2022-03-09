@@ -47,7 +47,10 @@ if(is(files, "RLum.Results") && files@originator == "extract_ROI")  {
   t <- sum(!duplicated(rownames(m)))
 
   ## set and fill area
-  a <- array(as.numeric(m), dim = c(t, ncol(m), length(ROI_AREA) / ncol(m)))
+  a <- array(0, dim = c(t, ncol(m), length(ROI_AREA) / ncol(m)))
+  x1 <- seq(1,nrow(m),t)
+  for(z in 1:(length(ROI_AREA) / ncol(m)))
+    a[,,z] <- m[x1[z]:(x1[z] + t - 1),]
 
   ## set dimension names to be compatible with
   ## the other input format
