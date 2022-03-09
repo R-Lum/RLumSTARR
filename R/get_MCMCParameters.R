@@ -22,7 +22,7 @@
 #'@return Returns a matrix with the parameter value or a named [list] with such matrices if `parameters` has
 #'a length > 1.
 #'
-#'@section Function version: 0.1.0
+#'@section Function version: 0.1.1
 #'
 #'@author Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom)
 #'
@@ -112,7 +112,7 @@ get_MCMCParameters <- function(
   }
 
   ##set row names
-  if(!is.null(attr(mcmc, "row_names")))
+  if(!is(l, "list") && !is.null(attr(mcmc, "row_names")))
     rownames(l) <- attr(mcmc, "row_names")
 
 # Return ------------------------------------------------------------------
