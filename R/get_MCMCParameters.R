@@ -59,7 +59,7 @@ get_MCMCParameters <- function(
 ) {
 
 # Input check -------------------------------------------------------------
-  ##add support objects from this package ... autmatic mcmc and row name extraction
+  ##add support objects from this package ... automated mcmc and row name extraction
   if(attr(mcmc, "class") == "RLumSTARR_TRUELight") {
     row_names <- as.character(mcmc[["RF_curve"]]@data[,1])
     mcmc <- mcmc[["jags_output"]][["mcmc"]]
