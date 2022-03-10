@@ -10,16 +10,23 @@
 #'**Method control**
 #'
 #'Supported options to be passed via the parameter `method_control`, most
-#'of them are used internally for the calls to [rjags::jags.model] and [rjags::coda.samples].
+#'of them are used internally for the calls to [runjags::run.jags] and [rjags::coda.samples].
 #'
-#'\tabular{lll}{
-#'**PARAMETER** \tab **TYPE** \tab **DESCRIPTION**\cr
-#'`n.chain` \tab [numeric] \tab the number of MCMC chains \cr
-#'`n.iter` \tab [numeric] \tab number of iterations for the MC runs \cr
-#'`thin` \tab [numeric] \tab thinning interval used for the monitoring \cr
-#'`variable.names` \tab [character] \tab variable names to monitor, `alpha` is always monitored \cr
-#'`model` \tab [character] \tab the bugs model
+#'\tabular{llll}{
+#'**PARAMETER** \tab **TYPE** \tab **DEFAULT** \tab **DESCRIPTION**\cr
+#'`n.chain` \tab [numeric] \tab `3` \tab the number of MCMC chains \cr
+#'`thin` \tab [numeric] \tab `10` \tab thinning interval used for the monitoring\cr
+#'`burnin` \tab [numeric] \tab `4000` \tab number of burn-in iterations, cf. [runjags::run.jags] \cr
+#'`sample` \tab [numeric] \tab `10000` \tab number of total number of samples, `0` skips the MCMC sampling \cr
+#'`adapt`  \tab [numeric] \tab  `1000` \tab number of adaptive iterations, cf. [runjags::run.jags] \cr
+#'`summarise` \tab [logical] \tab `FALSE` \tab calculate output statistics \cr
+#'`method` \tab [character] \tab `"rjags"` \tab way `runjags` will call JAGS, possible are `'rjags'`, `'simple'`, `'interruptible'`, `'parallel'`, `'rjparallel'`, `'background'`, `'bgparallel'` or `'snow'` cf. [runjags::run.jags] \cr
+#' jags.refresh` \tab [numeric] \tab `0.1` \tab refresh rate of update of the iteration process, select larger values of complex and long runs \cr
+#'`variable.names` \tab [character] \tab `"alpha"` \tab variable names to monitor, `alpha` is always monitored \cr
+#'`model` \tab [character] \tab the default model \tab the bugs model
 #'}
+#'
+#'*Note: The argument `model` allows to heavily modified the underlying model. To avoid crashes the paramters passed by `variable.names` will always be cross-checked against parameteres present in the model. Unknown parameters will be skipped!*
 #'
 #'@param data [array] (**required**): object created by [create_RFCurveArray]
 #'
@@ -51,7 +58,9 @@
 #'`...$model`: the model used to run the Bayesian process, use [writeLines] to have
 #'nicely formatted terminal output
 #'
-#'@section Function version: 0.1.0
+#'@keywords datagen
+#'
+#'@section Function version: 0.1.1
 #'
 #'@author Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom)
 #'
@@ -68,8 +77,8 @@
 #'  stepping = 10,
 #'  verbose = FALSE,
 #'  method_control = list(
-#'    n.chain = 1,
-#'    n.iter = 50,
+#'    n.chain = 2,
+#'    sample = 100,
 #'    thin = 20))
 #'
 #'@references Cunningham, A.C., Clark-Balzan, L., 2017. Overcoming crosstalk in
@@ -137,8 +146,13 @@ model_default <- "model {
 # Bayesian process --------------------------------------------------------
 method_control <- modifyList(x = list(
     n.chain = 3,
-    n.iter = 2000,
-    thin = 20,
+    sample = 10000,
+    thin = 10,
+    burnin = 4000,
+    adapt = 1000,
+    summarise = FALSE,
+    method = 'rjags',
+    jags.refresh = 0.1,
     variable.names = NULL,
     model = model_default),
   val = method_control)
@@ -147,39 +161,54 @@ method_control <- modifyList(x = list(
 Y <- data[seq(1,nrow(data),stepping[1]),abs(ROI[1]),]
 temp_area <- unlist(strsplit(dimnames(data)[[3]], ","))
 roi_area <- as.numeric(temp_area[seq(2,length(temp_area),dim(data)[2])])
-
 colnames(Y) <- roi_area
 
-##set model (we do this here to close the model connect)
-model <- textConnection(method_control$model[1])
+## make sure the variable names exist in the model and can be observed
+## this also avoids a lot input errors fast testing of modified models
+variable.names <- character()
+for(v in unique(c("alpha", method_control$variable.names))){
+  if(grepl(v, method_control$model[1], fixed = TRUE)) {
+    variable.names <- c(variable.names, v)
 
-##set jags model
-jags <- rjags::jags.model(
-    file = model,
-    n.chain = method_control$n.chain[1],
-    quiet = !verbose[1],
-    data = list(
-      Y = Y,
-      ROI_AREA = roi_area,
-      TIMES = nrow(Y))
-)
+  } else {
+    warning(paste0("[extract_TRUELight()] variable ",v," unknown in the model; skipped!"))
 
-close(model)
+  }
+}
 
-## generate posterior samples
-jags_output <-
-  rjags::coda.samples(
-    model = jags,
-    variable.names = c("alpha", method_control$variable.names),
-    n.iter = method_control$n.iter[1],
-    thin = method_control$thin[1],
-    progress.bar = if(verbose[1]) 'text' else 'none'
-  )
+# Run JAGS ----------------------------------------------------------------
+if(verbose) cli::cat_rule("[extract_TRUELight()]")
+
+## run modelling
+jags_output <- suppressWarnings(runjags::run.jags(
+  model = method_control$model[1],
+  monitor = variable.names,
+  n.chain = method_control$n.chain[1],
+  thin = method_control$thin[1],
+  data = list(
+    Y = Y,
+    ROI_AREA = roi_area,
+    TIMES = nrow(Y)),
+  silent.jags = !verbose[1],
+  jags.refresh = method_control$jags.refresh,
+  summarise = method_control$summarise[1],
+  method = method_control$method[1],
+  burnin = method_control$burnin[1],
+  sample = method_control$sample[1],
+  adapt = method_control$adapt[1]))
 
 
+
+# Output ------------------------------------------------------------------
 ## extract only alpha values, this way we can observe more variables
 ## without trashing the curve
-alpha <- get_MCMCParameters(jags_output, "alpha")
+if(length(jags_output$mcmc[[1]]) > 0) {
+  alpha <- get_MCMCParameters(jags_output$mcmc, "alpha")
+
+} else {
+  alpha <- matrix(NA,ncol = 1, nrow = length(rownames(Y)))
+
+}
 
 ## set new RLum object
 curve <- Luminescence::set_RLum(
