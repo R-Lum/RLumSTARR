@@ -49,7 +49,7 @@
 #' verbose = TRUE,
 #' method_control = list(
 #'  n.chain = 1,
-#'  n.iter = 50,
+#'  sample = 0,
 #'  thin = 20))
 #'
 #'@md

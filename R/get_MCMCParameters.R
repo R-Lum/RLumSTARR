@@ -31,20 +31,20 @@
 #'@examples
 #'
 #'## load example files
-#'files <- list.files(system.file("extdata", "", package="RLumSTARR"), full.names=TRUE)
+#' files <- list.files(system.file("extdata", "", package="RLumSTARR"), full.names=TRUE)
 #'
-#'##prepare data and run model
-#'dat <- create_RFCurveArray(files = files)
-#'output <-
-#'  extract_TRUELight(
-#'    data = dat,
-#'    ROI = c(4),
-#'    stepping = 60,
-#'    verbose = FALSE,
-#'    method_control = list(
-#'    n.chain = 1,
-#'    n.iter = 50,
-#'    thin = 20))
+#' ##prepare data and run model
+#' dat <- create_RFCurveArray(files = files)
+#' output <-
+#' extract_TRUELight(
+#'   data = dat,
+#'   ROI = c(4),
+#'   stepping = 60,
+#'   verbose = FALSE,
+#'   method_control = list(
+#'   n.chain = 1,
+#'   sample = 50,
+#'   thin = 20))
 #'
 #'##extract parameters
 #'get_MCMCParameters(output)
@@ -62,7 +62,7 @@ get_MCMCParameters <- function(
   ##add support objects from this package ... autmatic mcmc and row name extraction
   if(attr(mcmc, "class") == "RLumSTARR_TRUELight") {
     row_names <- as.character(mcmc[["RF_curve"]]@data[,1])
-    mcmc <- mcmc[["jags_output"]]
+    mcmc <- mcmc[["jags_output"]][["mcmc"]]
     attr(mcmc, "row_names") <- row_names
 
   }
