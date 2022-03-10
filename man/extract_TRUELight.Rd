@@ -55,19 +55,24 @@ The function will return the results for a \strong{single} curve from a \strong{
 \strong{Method control}
 
 Supported options to be passed via the parameter \code{method_control}, most
-of them are used internally for the calls to \link[rjags:jags.model]{rjags::jags.model} and \link[rjags:coda.samples]{rjags::coda.samples}.
+of them are used internally for the calls to \link[runjags:run.jags]{runjags::run.jags} and \link[rjags:coda.samples]{rjags::coda.samples}.
 
-\tabular{lll}{
-\strong{PARAMETER} \tab \strong{TYPE} \tab \strong{DESCRIPTION}\cr
-\code{n.chain} \tab \link{numeric} \tab the number of MCMC chains \cr
-\code{n.iter} \tab \link{numeric} \tab number of iterations for the MC runs \cr
-\code{thin} \tab \link{numeric} \tab thinning interval used for the monitoring \cr
-\code{variable.names} \tab \link{character} \tab variable names to monitor, \code{alpha} is always monitored \cr
-\code{model} \tab \link{character} \tab the bugs model
+\tabular{llll}{
+\strong{PARAMETER} \tab \strong{TYPE} \tab \strong{DEFAULT} \tab \strong{DESCRIPTION}\cr
+\code{n.chain} \tab \link{numeric} \tab \code{3} \tab the number of MCMC chains \cr
+\code{thin} \tab \link{numeric} \tab \code{10} \tab thinning interval used for the monitoring\cr
+\code{burnin} \tab \link{numeric} \tab \code{4000} \tab number of burn-in iterations, cf. \link[runjags:run.jags]{runjags::run.jags} \cr
+\code{sample} \tab \link{numeric} \tab \code{10000} \tab number of total number of samples, \code{0} skips the MCMC sampling \cr
+\code{adapt}  \tab \link{numeric} \tab  \code{1000} \tab number of adaptive iterations, cf. \link[runjags:run.jags]{runjags::run.jags} \cr
+\code{summarise} \tab \link{logical} \tab \code{FALSE} \tab calculate output statistics \cr
+\code{method} \tab \link{character} \tab \code{"rjags"} \tab way \code{runjags} will call JAGS, possible are \code{'rjags'}, \code{'simple'}, \code{'interruptible'}, \code{'parallel'}, \code{'rjparallel'}, \code{'background'}, \code{'bgparallel'} or \code{'snow'} cf. \link[runjags:run.jags]{runjags::run.jags} \cr
+jags.refresh\verb{\\tab [numeric] \\tab}0.1\verb{\\tab refresh rate of update of the iteration process, select larger values of complex and long runs \\cr}variable.names\verb{\\tab [character] \\tab}"alpha"\verb{\\tab variable names to monitor,}alpha\verb{is always monitored \\cr}model` \tab \link{character} \tab the default model \tab the bugs model
 }
+
+\emph{Note: The argument \code{model} allows to heavily modified the underlying model. To avoid crashes the paramters passed by \code{variable.names} will always be cross-checked against parameteres present in the model. Unknown parameters will be skipped!}
 }
 \section{Function version}{
- 0.1.0
+ 0.1.1
 }
 
 \examples{
@@ -83,14 +88,14 @@ output <- extract_TRUELight(
  stepping = 10,
  verbose = FALSE,
  method_control = list(
-   n.chain = 1,
-   n.iter = 50,
+   n.chain = 2,
+   sample = 100,
    thin = 20))
 
 } 
 
 \section{How to cite}{
-Kreutzer, S., 2022. extract_TRUELight(): Extract True Light from the Camera Measurements using a Bayesian Approach. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2022. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-120. 
+Kreutzer, S., 2022. extract_TRUELight(): Extract True Light from the Camera Measurements using a Bayesian Approach. Function version 0.1.1. In: Kreutzer, S., Mittelstrass, D., 2022. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-130. 
 }
 
 \references{
@@ -104,3 +109,4 @@ doi:10.1016/j.radmeas.2017.06.004
 \author{
 Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom)
 , RLum Developer Team}
+\keyword{datagen}

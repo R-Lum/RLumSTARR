@@ -32,7 +32,7 @@ In the latter case, the row names of the extracted matrices have the same dimens
 If more processing is wanted, \code{'coda'} package should be used.
 }
 \section{Function version}{
- 0.1.0
+ 0.1.1
 }
 
 \examples{
@@ -43,15 +43,15 @@ files <- list.files(system.file("extdata", "", package="RLumSTARR"), full.names=
 ##prepare data and run model
 dat <- create_RFCurveArray(files = files)
 output <-
- extract_TRUELight(
-   data = dat,
-   ROI = c(4),
-   stepping = 60,
-   verbose = FALSE,
-   method_control = list(
-   n.chain = 1,
-   n.iter = 50,
-   thin = 20))
+extract_TRUELight(
+  data = dat,
+  ROI = c(4),
+  stepping = 60,
+  verbose = FALSE,
+  method_control = list(
+  n.chain = 1,
+  sample = 50,
+  thin = 20))
 
 ##extract parameters
 get_MCMCParameters(output)
@@ -65,6 +65,6 @@ Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United K
 , RLum Developer Team} 
 
 \section{How to cite}{
-Kreutzer, S., 2022. get_MCMCParameters(): Extracts a parameter from an MCMC list. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2022. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-120. 
+Kreutzer, S., 2022. get_MCMCParameters(): Extracts a parameter from an MCMC list. Function version 0.1.1. In: Kreutzer, S., Mittelstrass, D., 2022. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-130. 
 }
 

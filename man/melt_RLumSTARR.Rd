@@ -30,6 +30,6 @@ Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University
 , RLum Developer Team} 
 
 \section{How to cite}{
-Kreutzer, S., 2022. melt_RLumSTARR(): Melt output from RLumSTARR into simple data frames. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2022. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-120. 
+Kreutzer, S., 2022. melt_RLumSTARR(): Melt output from RLumSTARR into simple data frames. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2022. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-130. 
 }
 
