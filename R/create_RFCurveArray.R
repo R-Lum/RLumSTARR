@@ -13,7 +13,7 @@
 #'
 #'@section Function version: 0.1.0
 #'
-#'@author Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom)
+#'@author Sebastian Kreutzer, Institute of Geography, Heidelberg University (Germany)
 #'
 #'@seealso [Luminescence::read_RF2R], [Luminescence::extract_ROI]
 #'

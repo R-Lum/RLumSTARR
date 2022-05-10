@@ -61,10 +61,10 @@ get_MCMCParameters(output)
 \link[coda:HPDinterval]{coda::HPDinterval}, \link{extract_TRUELight}
 }
 \author{
-Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom)
+Sebastian Kreutzer, Institute of Geography, Heidelberg University (Germany)
 , RLum Developer Team} 
 
 \section{How to cite}{
-Kreutzer, S., 2022. get_MCMCParameters(): Extracts a parameter from an MCMC list. Function version 0.1.1. In: Kreutzer, S., Mittelstrass, D., 2022. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-130. 
+Kreutzer, S., 2022. get_MCMCParameters(): Extracts a parameter from an MCMC list. Function version 0.1.1. In: Kreutzer, S., Mittelstrass, D., 2022. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-132. 
 }
 

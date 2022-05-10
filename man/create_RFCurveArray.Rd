@@ -37,11 +37,11 @@ create_RFCurveArray(files = files)
 \link[Luminescence:read_RF2R]{Luminescence::read_RF2R}, \link[Luminescence:extract_ROI]{Luminescence::extract_ROI}
 }
 \author{
-Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom)
+Sebastian Kreutzer, Institute of Geography, Heidelberg University (Germany)
 , RLum Developer Team} 
 
 \section{How to cite}{
-Kreutzer, S., 2022. create_RFCurveArray(): Create Multidimensional Curve Arrays from RF File input. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2022. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-130. 
+Kreutzer, S., 2022. create_RFCurveArray(): Create Multidimensional Curve Arrays from RF File input. Function version 0.1.0. In: Kreutzer, S., Mittelstrass, D., 2022. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-132. 
 }
 
 \keyword{datagen}

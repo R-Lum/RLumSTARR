@@ -15,7 +15,7 @@
 #'@keywords package
 #'@docType package
 #'
-#'@author Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom) \cr
+#'@author Sebastian Kreutzer, Institute of Geography, Heidelberg University (Germany) \cr
 #' Dirk Mittelstrass (Germany)
 #'
 #'

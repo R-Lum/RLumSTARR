@@ -6,7 +6,7 @@
 #'
 #'@param y: input object
 #'
-#'@author Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom)
+#'@author Sebastian Kreutzer, Institute of Geography, Heidelberg University (Germany)
 #'
 #'@keywords internal
 #'@md

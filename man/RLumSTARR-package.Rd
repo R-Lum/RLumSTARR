@@ -20,7 +20,7 @@ research and innovation programme under the Marie Skłodowska-Curie grant agreem
 ##TODO
 }
 \author{
-Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom) \cr
+Sebastian Kreutzer, Institute of Geography, Heidelberg University (Germany) \cr
 Dirk Mittelstrass (Germany)
 , RLum Developer Team}
 \keyword{package}

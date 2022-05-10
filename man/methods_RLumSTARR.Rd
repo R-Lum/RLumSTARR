@@ -19,11 +19,11 @@
 Methods for S3-generics implemented for the package 'RLumSTARR'.
 }
 \author{
-Sebastian Kreutzer, Geography & Earth Sciences, Aberystwyth University (United Kingdom)
+Sebastian Kreutzer, Institute of Geography, Heidelberg University (Germany)
 , RLum Developer Team} 
 
 \section{How to cite}{
-Kreutzer, S., 2022. methods_RLumSTARR(): methods_RLumSTARR. In: Kreutzer, S., Mittelstrass, D., 2022. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-130. 
+Kreutzer, S., 2022. methods_RLumSTARR(): methods_RLumSTARR. In: Kreutzer, S., Mittelstrass, D., 2022. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-132. 
 }
 
 \keyword{internal}
