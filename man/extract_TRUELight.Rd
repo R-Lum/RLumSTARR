@@ -95,7 +95,7 @@ output <- extract_TRUELight(
 } 
 
 \section{How to cite}{
-Kreutzer, S., 2022. extract_TRUELight(): Extract True Light from the Camera Measurements using a Bayesian Approach. Function version 0.1.1. In: Kreutzer, S., Mittelstrass, D., 2022. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-132. 
+Kreutzer, S., 2024. extract_TRUELight(): Extract True Light from the Camera Measurements using a Bayesian Approach. Function version 0.1.1. In: Kreutzer, S., Mittelstrass, D., 2024. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-134. 
 }
 
 \references{

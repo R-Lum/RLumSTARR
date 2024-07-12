@@ -51,4 +51,4 @@ CREDit)](https://cordis.europa.eu/project/id/844457).
 
 ## Related projects
 
--   [Luminescence](https://github.com/R-Lum/Luminescence)
+- [Luminescence](https://github.com/R-Lum/Luminescence)

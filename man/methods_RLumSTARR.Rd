@@ -11,9 +11,9 @@
 \method{print}{RLumSTARR_model}(x, ...)
 }
 \arguments{
-\item{x:}{input object}
+\item{x}{: input object}
 
-\item{y:}{input object}
+\item{y}{: input object}
 }
 \description{
 Methods for S3-generics implemented for the package 'RLumSTARR'.
@@ -23,7 +23,7 @@ Sebastian Kreutzer, Institute of Geography, Heidelberg University (Germany)
 , RLum Developer Team} 
 
 \section{How to cite}{
-Kreutzer, S., 2022. methods_RLumSTARR(): methods_RLumSTARR. In: Kreutzer, S., Mittelstrass, D., 2022. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-132. 
+Kreutzer, S., 2024. methods_RLumSTARR(): methods_RLumSTARR. In: Kreutzer, S., Mittelstrass, D., 2024. RLumSTARR: Spatially Resolved Radiofluorescence Analysis (EXPERIMENTAL PACKAGE). R package version 0.1.0.9000-134. 
 }
 
 \keyword{internal}
