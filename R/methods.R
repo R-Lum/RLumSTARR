@@ -1,10 +1,10 @@
-#'methods_RLumSTARR
+#'@title methods_RLumSTARR
 #'
 #'@description  Methods for S3-generics implemented for the package 'RLumSTARR'.
 #'
-#'@param x: input object
+#'@param x : input object
 #'
-#'@param y: input object
+#'@param y : input object
 #'
 #'@author Sebastian Kreutzer, Institute of Geography, Heidelberg University (Germany)
 #'
