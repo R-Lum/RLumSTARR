@@ -22,5 +22,5 @@ research and innovation programme under the Marie Skłodowska-Curie grant agreem
 \author{
 Sebastian Kreutzer, Institute of Geography, Heidelberg University (Germany) \cr
 Dirk Mittelstrass (Germany)
-, RLum Developer Team}
+}
 \keyword{package}

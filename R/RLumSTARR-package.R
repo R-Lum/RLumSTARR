@@ -13,7 +13,6 @@
 #'@name RLumSTARR-package
 #'@aliases RLumSTARR
 #'@keywords package
-#'@docType package
 #'
 #'@author Sebastian Kreutzer, Institute of Geography, Heidelberg University (Germany) \cr
 #' Dirk Mittelstrass (Germany)
@@ -29,4 +28,4 @@
 #'@importFrom graphics mtext par
 #'
 #'@md
-NULL
+"_PACKAGE"
